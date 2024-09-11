@@ -1,0 +1,26 @@
+{
+    "waves": [
+        {
+            "name": "Wave 1",
+            "enemies": [
+                {
+                    "amount": 5,
+                    "enemyType": "NormalEnemy"
+                },
+                {
+                    "amount": 5,
+                    "enemyType": "FireEnemy"
+                }
+            ]
+        },
+        {
+            "name": "Wave 2",
+            "enemies": [
+                {
+                    "amount": 10,
+                    "enemyType": "IceEnemy"
+                }
+            ]
+        }
+    ]
+}
