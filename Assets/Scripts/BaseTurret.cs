@@ -131,7 +131,7 @@ public abstract class BaseTurret : MonoBehaviour
         {
             upgradesMenuRectTransform.position = currentPosition;
 
-        }
+        }//test
     }
 
     private void CloseUpgradesMenu()
