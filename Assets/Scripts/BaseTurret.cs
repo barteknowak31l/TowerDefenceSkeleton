@@ -14,6 +14,7 @@ public abstract class BaseTurret : MonoBehaviour
     [SerializeField] protected float baseFireCooldown;
     [SerializeField] protected float fireCooldown;
     [SerializeField] protected DamageType damageType = DamageType.normal;
+    [SerializeField] protected DamageSource damageSource;
     [SerializeField] protected int cost = 100;
     [SerializeField] public string upgradesConfigFile;
 
@@ -71,7 +72,7 @@ public abstract class BaseTurret : MonoBehaviour
     // Get Damage info based on current turret stats
     public DamageInfo GetDamageInfo()
     {
-        return new DamageInfo(damageType, damage);
+        return new DamageInfo(damageType,damageSource, damage);
     }
 
     // Upgrade turret tier

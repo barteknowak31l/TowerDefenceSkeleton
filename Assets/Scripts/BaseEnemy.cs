@@ -67,6 +67,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
     public virtual void DealDamage(DamageInfo damageInfo)
     {
+        Debug.Log(damageInfo.damageSource);
 
         switch(damageInfo.damageType)
         {
@@ -87,21 +88,43 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         currentHp -= damageInfo.amount;
 
+
     }
 
     protected virtual void DealIceDamage(DamageInfo damageInfo)
     {
-
+        switch (damageInfo.damageSource)
+        {
+            case DamageSource.singleTurret:             ; break;
+            case DamageSource.sniperTurret:             ; break;
+            case DamageSource.cannonTurret:             ; break;
+            case DamageSource.auraTurret:               ; break;
+            default: Debug.Log(string.Format("Unrecognized Damage Source: {}", damageInfo.damageSource.ToString())); break;
+        }
     }
 
     protected virtual void DealFireDamage(DamageInfo damageInfo)
     {
-
+        switch (damageInfo.damageSource)
+        {
+            case DamageSource.singleTurret:; break;
+            case DamageSource.sniperTurret:; break;
+            case DamageSource.cannonTurret:; break;
+            case DamageSource.auraTurret:; break;
+            default: Debug.Log(string.Format("Unrecognized Damage Source: {}", damageInfo.damageSource.ToString())); break;
+        }
     }
 
     protected virtual void DealElectricDamage(DamageInfo damageInfo)
     {
-
+        switch (damageInfo.damageSource)
+        {
+            case DamageSource.singleTurret:; break;
+            case DamageSource.sniperTurret:; break;
+            case DamageSource.cannonTurret:; break;
+            case DamageSource.auraTurret:; break;
+            default: Debug.Log(string.Format("Unrecognized Damage Source: {}", damageInfo.damageSource.ToString())); break;
+        }
     }
 
     protected void findNextDestinationPoint()
