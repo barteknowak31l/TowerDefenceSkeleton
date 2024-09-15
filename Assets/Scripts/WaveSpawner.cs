@@ -14,9 +14,13 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField] public int enemiesAlive = 0;
 
+    [Header("Wave Breaks")]
+    [SerializeField] private float breakDuration = 5.0f;
+    [SerializeField] private float currentBreakTime = 0.0f;
+    private bool isInBreak = false;
 
     private EnemySpawnDispatcher enemySpawnDispatcher;
-
+    public GameObject skipButton;
     public static WaveSpawner Instance { get; private set; }
     private void Awake()
     {
@@ -55,6 +59,13 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
+    
+        if (isInBreak)
+        {
+            HandleWaveBreak();
+            return;
+        }
+     
         currentSpawnDelay -= Time.deltaTime;
         if (currentSpawnDelay < 0 && isSpawning)
         {
@@ -65,12 +76,18 @@ public class WaveSpawner : MonoBehaviour
 
         if (!isSpawning && currentWave.enemies.Count <= 0 && enemiesAlive <= 0)
         {
-            waveNumber++;
-            StartWave();
+            StartWaveBreak();
+
         }
 
     }
 
+
+   public void SkipWaveBreak()
+    {
+        currentBreakTime = 0;
+
+    }
 
     void StartWave()
     {
@@ -101,5 +118,25 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log(string.Format("Spawning enemy type: {0}, amount left to spawn: {1}", waveEnemy.enemyType, waveEnemy.amount));
         enemySpawnDispatcher.Dispatch(waveEnemy.enemyType, GameManager.Instance.enemySpawnPoint, Quaternion.identity);
     }
+    void StartWaveBreak()
+    {
+        isInBreak = true; 
+        currentBreakTime = breakDuration; 
+    }
 
+    void HandleWaveBreak()
+    {
+        skipButton.SetActive(true);
+
+        currentBreakTime -= Time.deltaTime;
+
+        if (currentBreakTime <= 0)
+        {
+            skipButton.SetActive(false);
+
+            isInBreak = false;
+            waveNumber++; 
+            StartWave();
+        }
+    }
 }
