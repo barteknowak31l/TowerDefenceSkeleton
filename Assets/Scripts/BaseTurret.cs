@@ -7,12 +7,16 @@ using static UnityEngine.GraphicsBuffer;
 public abstract class BaseTurret : MonoBehaviour
 {
     [Header("Statistics")]
-    [SerializeField] protected float baseRange = 3f;
+    [SerializeField] protected float baseRange;
     [SerializeField] protected float range;
     [SerializeField] protected float damage;
-    [SerializeField] protected float baseDamage = 10f;
+    [SerializeField] protected float baseDamage;
+    [SerializeField] protected float baseFireCooldown;
+    [SerializeField] protected float fireCooldown;
     [SerializeField] protected DamageType damageType = DamageType.normal;
     [SerializeField] protected int cost = 100;
+    [SerializeField] public string upgradesConfigFile;
+
 
 
     [Header("References")]
@@ -29,11 +33,16 @@ public abstract class BaseTurret : MonoBehaviour
   
         upgradesMenuRectTransform = upgradesMenu.GetComponent<RectTransform>();
         mainCamera = Camera.main;
-        range = baseRange;
-       damage = baseDamage;
 
+        CalculateFireCooldown();
+        CalculateDamage();
+        CalculateRange();
 
+        currentPosition = upgradesMenuRectTransform.position;
+        basePosition = currentPosition;
     }
+
+
 
     protected virtual void OnEnable()
     {
@@ -41,20 +50,41 @@ public abstract class BaseTurret : MonoBehaviour
     }
 
 
+    protected virtual void CalculateFireCooldown()
+    {
+        baseFireCooldown = upgrades.GetUpgradeByType(UpgradeTypes.attackSpeed).value;
+        fireCooldown = baseFireCooldown;
+    }
+
+    protected virtual void CalculateDamage()
+    {
+        baseDamage = upgrades.GetUpgradeByType(UpgradeTypes.damage).value;
+        damage = baseDamage;
+
+
+    }
+
+    protected virtual void CalculateRange()
+    {
+        baseRange = upgrades.GetUpgradeByType(UpgradeTypes.range).value;
+        range = baseRange;
+
+    }
+
     // Get Damage info based on current turret stats
     public DamageInfo GetDamageInfo()
     {
         return new DamageInfo(damageType, damage);
     }
 
-    // Try upgrading a particular statistic - must pass validation
-    public void UpgradeStatistic(UpgradeTypes type)
+    // Upgrade turret tier
+    public void UpgradeTurret()
     {
-        upgrades.Upgrade(type);
+        upgrades.UpgradeTurret();
     }
 
     // Implement this to have different upgrade results per turret type
-    protected abstract void HandleUpgradeEvent(Upgrade upgrade, BaseTurret turret);
+    protected abstract void HandleUpgradeEvent(BaseTurret turret);
 
 
     // Damage Type must be set to deal proper damage type by turret
@@ -143,5 +173,9 @@ public abstract class BaseTurret : MonoBehaviour
         }
     }
 
+    public int GetTurretLevel()
+    {
+        return upgrades.turretLevel;
+    }
 
 }

@@ -8,15 +8,10 @@ public abstract class BaseShootingTurret : BaseTurret
 {
     [Header("Shooting stuff")]
     [SerializeField] protected float rotationSpeed = 200f;
-    [SerializeField] protected float baseFireCooldown = 1f;
     [SerializeField] protected Transform rotationPoint;
     [SerializeField] protected Transform firingPoint;
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected LayerMask enemyMask;
-
-    
-
-    private float fireCooldown;
 
     protected Transform target;
 
@@ -41,6 +36,9 @@ public abstract class BaseShootingTurret : BaseTurret
 
     protected virtual void Update()
     {
+        if(fireCooldown > -1f)
+        fireCooldown -= Time.deltaTime;
+
         if (target == null)
         {
             FindTarget();
@@ -48,8 +46,6 @@ public abstract class BaseShootingTurret : BaseTurret
         }
 
         RotateTowardsTarget();
-
-        fireCooldown -= Time.deltaTime;
 
         if (!CheckIfTargetInRange())
         {
@@ -65,38 +61,16 @@ public abstract class BaseShootingTurret : BaseTurret
     }    
 
     // Upgrade methods below can be further overrided to have different outcomes per turret type
-    protected override void HandleUpgradeEvent(Upgrade upgrade, BaseTurret turret)
+    protected override void HandleUpgradeEvent(BaseTurret turret)
     {
         if (turret != this) return;
 
-        if (upgrade.type == UpgradeTypes.attackSpeed)
-        {
             CalculateFireCooldown();
-        }
-        if (upgrade.type == UpgradeTypes.damage)
-        {
             CalculateDamage();
-        }
-        if (upgrade.type == UpgradeTypes.range)
-        {
             CalculateRange();
-        }
     }
 
-    protected virtual void CalculateFireCooldown()
-    {
-        fireCooldown = baseFireCooldown - 0.2f * upgrades.GetUpgradeByType(UpgradeTypes.attackSpeed).level;
-    }
 
-    protected virtual void CalculateDamage()
-    {
-        damage = baseDamage + baseDamage * upgrades.GetUpgradeByType(UpgradeTypes.damage).level + 1;
-    }
-
-    protected virtual void CalculateRange()
-    {
-        range = baseRange + baseRange * upgrades.GetUpgradeByType(UpgradeTypes.range).level + 1;
-    }
 
     private void FindTarget()
     {
