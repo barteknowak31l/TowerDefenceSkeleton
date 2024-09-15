@@ -6,6 +6,7 @@ public class GridCell : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRendererPreview;
 
     public Color baseColor;
     public Color hoverColor;
@@ -23,25 +24,19 @@ public class GridCell : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        
-        if (turret == null) {
-
+        if (turret == null)
+        {
             spriteRenderer.color = hoverColor;
-            if (previewTurret == null)
+
+            Sprite turretSprite = BuildManager.Instance.GetSelectedTowerSprite();
+
+            if (turretSprite != null)
             {
-                GameObject turretToPreview = BuildManager.Instance.GetSelectedTower();
-
-                if (turretToPreview != null)
-                {
-                    previewTurret = Instantiate(turretToPreview, transform.position, Quaternion.identity);
-                    SetTurretPreviewMode(previewTurret);
-                }
+                spriteRendererPreview.sprite = turretSprite;
             }
-
-
         }
 
-     
+
 
 
     }
@@ -50,10 +45,8 @@ public class GridCell : MonoBehaviour
     {
         spriteRenderer.color = baseColor;
 
-        if (previewTurret != null)
-        {
-            Destroy(previewTurret);
-        }
+        spriteRendererPreview.sprite = null;
+
     }
 
     private void OnMouseDown()
@@ -77,25 +70,4 @@ public class GridCell : MonoBehaviour
 
     }
 
-    private void SetTurretPreviewMode(GameObject turret)
-    {
-        foreach (var renderer in turret.GetComponentsInChildren<Renderer>())
-        {
-            Color color = renderer.material.color;
-            renderer.material.color = color;
-        }
-
-        NormalShootingTurret shootingScript = turret.GetComponent<NormalShootingTurret>();
-        if (shootingScript != null)
-        {
-            shootingScript.enabled = false;
-        }
-        BoxCollider2D turretCollider = turret.GetComponent<BoxCollider2D>();
-        if (turretCollider != null)
-        {
-            turretCollider.enabled = false;
-        }
-
-
-    }
 }

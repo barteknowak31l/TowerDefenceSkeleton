@@ -6,7 +6,7 @@ public class BuildManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject[] towerPrefabs;
-
+    [SerializeField] private Sprite[] towerSprites;
     private int selectedTower = 0;
 
     public static BuildManager Instance { get; private set; }
@@ -35,7 +35,13 @@ public class BuildManager : MonoBehaviour
 
         return null;
     }
+    public Sprite GetSelectedTowerSprite()
+    {
+        if (selectedTower != -1)
+            return towerSprites[selectedTower];
 
+        return null;
+    }
     public void SetSelectedTower(int towerNumber)
     {
         selectedTower = towerNumber;
