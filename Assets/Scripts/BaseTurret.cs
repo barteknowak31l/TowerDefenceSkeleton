@@ -12,6 +12,7 @@ public abstract class BaseTurret : MonoBehaviour
     [SerializeField] protected float damage;
     [SerializeField] protected float baseDamage = 10f;
     [SerializeField] protected DamageType damageType = DamageType.normal;
+    [SerializeField] protected DamageSource damageSource = DamageSource.singleTurret;
     [SerializeField] protected int cost = 100;
 
 
@@ -44,7 +45,7 @@ public abstract class BaseTurret : MonoBehaviour
     // Get Damage info based on current turret stats
     public DamageInfo GetDamageInfo()
     {
-        return new DamageInfo(damageType, damage);
+        return new DamageInfo(damageType,damageSource, damage);
     }
 
     // Try upgrading a particular statistic - must pass validation
