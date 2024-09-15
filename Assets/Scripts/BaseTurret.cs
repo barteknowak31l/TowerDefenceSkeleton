@@ -14,7 +14,7 @@ public abstract class BaseTurret : MonoBehaviour
     [SerializeField] protected float baseFireCooldown;
     [SerializeField] protected float fireCooldown;
     [SerializeField] protected DamageType damageType = DamageType.normal;
-    [SerializeField] protected DamageSource damageSource = DamageSource.singleTurret;
+    [SerializeField] protected DamageSource damageSource;
     [SerializeField] protected int cost = 100;
     [SerializeField] public string upgradesConfigFile;
 
