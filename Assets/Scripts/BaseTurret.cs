@@ -23,13 +23,11 @@ public abstract class BaseTurret : MonoBehaviour
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected TurretUpgrades upgrades;
     [SerializeField] protected GameObject upgradesMenu;
-    private RectTransform upgradesMenuRectTransform;
+    [SerializeField] private RectTransform upgradesMenuRectTransform;
     private Camera mainCamera;
     private bool upgradesMenuOpen = false;
-    Vector3 currentPosition;
     private static BaseTurret currentlyOpenMenu = null;
-
-    Vector3 basePosition;
+   private bool menuPositionChanged = false;
     protected virtual void Start()
     {
   
@@ -137,30 +135,31 @@ public abstract class BaseTurret : MonoBehaviour
     private void ShowUpgradesMenu()
     {
         upgradesMenu.SetActive(true);
-        currentPosition = basePosition;
-        currentPosition.z -=15;
 
-        if (upgradesMenuRectTransform.position.x > 0 && upgradesMenuRectTransform.position.y > 0)
+        if (menuPositionChanged == false)
         {
-            currentPosition.x -= 2;
-            currentPosition.y -= 2;
+            Vector3 currentPosition = upgradesMenuRectTransform.position;
+
+            if (upgradesMenuRectTransform.position.x > 0 && upgradesMenuRectTransform.position.y > 0)
+            {
+                currentPosition.x -= 2.2f;
+                currentPosition.y -= 2.2f;
+            }
+            else if (upgradesMenuRectTransform.position.x < 0 && upgradesMenuRectTransform.position.y > 0)
+            {
+                currentPosition.y -= 2.2f;
+            }
+            else if (upgradesMenuRectTransform.position.x > 0 && upgradesMenuRectTransform.position.y < 0)
+            {
+                currentPosition.x -= 2.2f;
+            }
+
             upgradesMenuRectTransform.position = currentPosition;
-        }
-        else if (upgradesMenuRectTransform.position.x < 0 && upgradesMenuRectTransform.position.y > 0)
-        {
-            currentPosition.y -= 2;
-            upgradesMenuRectTransform.position = currentPosition;
-        }
-        else if (upgradesMenuRectTransform.position.x > 0 && upgradesMenuRectTransform.position.y < 0)
-        {
-            currentPosition.x -= 2;
-            upgradesMenuRectTransform.position = currentPosition;
-        }
-        else
-        {
-            upgradesMenuRectTransform.position = currentPosition;
+            menuPositionChanged = true;
 
         }
+
+
     }
 
     private void CloseUpgradesMenu()

@@ -195,6 +195,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4970361592607226332}
   upgrades: {fileID: 0}
   upgradesMenu: {fileID: 5066242826788986625}
+  upgradesMenuRectTransform: {fileID: 0}
   rotationSpeed: 200
   baseFireCooldown: 1
   rotationPoint: {fileID: 1389588656270255927}
@@ -413,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4713757894760583941, guid: 51e7d5e866a40b644be1453606e6522d, type: 3}
       propertyPath: m_SortingLayerID
-      value: -1332002953
+      value: -1858588841
       objectReference: {fileID: 0}
     - target: {fileID: 4714058771149878246, guid: 51e7d5e866a40b644be1453606e6522d, type: 3}
       propertyPath: m_Layer
