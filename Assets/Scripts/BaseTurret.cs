@@ -37,9 +37,6 @@ public abstract class BaseTurret : MonoBehaviour
         CalculateFireCooldown();
         CalculateDamage();
         CalculateRange();
-
-        currentPosition = upgradesMenuRectTransform.position;
-        basePosition = currentPosition;
     }
 
 
