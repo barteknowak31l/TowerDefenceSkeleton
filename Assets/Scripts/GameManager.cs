@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
 
 
     [Header("Player Data")]
-    public int gold;
+    [SerializeField] public int gold;
+    [SerializeField] public int damageTypeSelectionLevel = 2;
+    [SerializeField] public int maxUpgradeLvl = 5;
 
     [Header("Enemy Path Points")]
     [SerializeField] public Transform enemySpawnPoint;

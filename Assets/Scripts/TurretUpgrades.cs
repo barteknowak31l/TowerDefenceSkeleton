@@ -16,25 +16,19 @@ public class Upgrade
 {
     public UpgradeTypes type;
     public int level;
-    public int baseCost;
-    public int cost;
-    public int costMult;
-    public bool isFavoured;
-
-    public Upgrade()
-    {
-        this.isFavoured = false;
-    }
+    public float value; 
+    public List<float> values;
 
     public void LevelUp()
     {
+        if (level >= GameManager.Instance.maxUpgradeLvl) return;
         level++;
-        CalculateNewCost();
+        CalculateNewValue();
     }
 
-    private void CalculateNewCost()
+    private void CalculateNewValue()
     {
-        baseCost = baseCost + level * costMult;
+        value = values[level];
     }
 
     public Upgrade Type(UpgradeTypes _type)
@@ -43,21 +37,20 @@ public class Upgrade
         return this;
     }
 
-    public Upgrade Level(int _level)
+    public Upgrade Values(List<float> _values)
     {
-        this.level = _level;
+        this.values = _values;
+        return this;
+    }
+    public Upgrade Value(float _value)
+    {
+        this.value = _value;
         return this;
     }
 
-    public Upgrade BaseCost(int _baseCost)
+    public Upgrade Level(int _level)
     {
-        this.baseCost = _baseCost;
-        this.cost = _baseCost;
-        return this;
-    }
-    public Upgrade CostMult(int _costMult)
-    {
-        this.costMult = _costMult;
+        this.level = _level;
         return this;
     }
 
@@ -69,46 +62,55 @@ public class TurretUpgrades : MonoBehaviour
 {
     [Header("Upgrades")]
     public int turretLevel;
+    public int cost;
+    public List<int> costs;
     public List<Upgrade> upgrades;
-    public Upgrade favouredUpgrade;
-
-    public delegate void UpgradeSuccessEvent(Upgrade upgrade, BaseTurret turret);
-    public event UpgradeSuccessEvent UpgradeSuccess;
 
     [Header("References")]
     [SerializeField] private BaseTurret turret;
 
-    public void Start()
+    public delegate void UpgradeSuccessEvent(BaseTurret turret);
+    public event UpgradeSuccessEvent UpgradeSuccess;
+    private void Awake()
     {
         turretLevel = 0;
-
         turret = GetComponent<BaseTurret>();
-
         SetupUpgrades();
+
     }
 
     private void SetupUpgrades()
     {
-        favouredUpgrade = new Upgrade()
-            .Type(UpgradeTypes.none)
-            .Build();
-
         upgrades = new List<Upgrade>();
+
+
+
+        TurretUpgradesData json = JSONReader.Instance.Read<TurretUpgradesData>(turret.upgradesConfigFile);
+        costs = new List<int>(json.costs);
+        CalculateTierUpgradeCost();
+
+
+        List<UpgradeData> data = new List<UpgradeData>(json.upgradesData);
+        UpgradeData attackSpeedData = data.Find(x => x.type == "attackSpeed");
+        UpgradeData rangeData = data.Find(x => x.type == "range");
+        UpgradeData damageData = data.Find(x => x.type == "damage");
 
         Upgrade attackSpeed = new Upgrade()
             .Type(UpgradeTypes.attackSpeed)
-            .BaseCost(200)
-            .CostMult(200)
+            .Value(attackSpeedData.values[0])
+            .Values(new List<float>(attackSpeedData.values))
             .Build();
+
         Upgrade damage = new Upgrade()
             .Type(UpgradeTypes.damage)
-            .BaseCost(200)
-            .CostMult(200)
+            .Value(damageData.values[0])
+            .Values(new List<float>(damageData.values))
             .Build();
+
         Upgrade range = new Upgrade()
             .Type(UpgradeTypes.range)
-            .BaseCost(200)
-            .CostMult(200)
+            .Value(rangeData.values[0])
+            .Values(new List<float>(rangeData.values))
             .Build();
 
         upgrades.Add(attackSpeed);
@@ -116,38 +118,17 @@ public class TurretUpgrades : MonoBehaviour
         upgrades.Add(range);
     }
 
-    public void Upgrade(UpgradeTypes type)
+    private void CalculateTierUpgradeCost()
     {
-        // check cost
-        // if +2lvl check if favoured
-        // calc new cost and set it
-        // upgrade
+        cost = costs[turretLevel];
+    }
 
-        Upgrade upgrade = upgrades.Find(x => x.type == type);
-
-        Debug.Log(favouredUpgrade == null);
-
-        if(GameManager.Instance.SpendGold(upgrade.cost))
+    private void UpgradeAll()
+    {
+        foreach (Upgrade upgrade in upgrades)
         {
-            if (upgrade.level >= 1 && favouredUpgrade.type == UpgradeTypes.none)
-            {
-                favouredUpgrade = upgrade;
-                UpgradeTurret(upgrade);
-
-            }
-            else if (upgrade.level >= 1 && favouredUpgrade.type == upgrade.type && turretLevel < 5)
-            {
-                UpgradeTurret(upgrade);
-
-            }
-
-            if (upgrade.level == 0)
-            {
-                UpgradeTurret(upgrade);
-            }
-
+            upgrade.LevelUp();
         }
-
     }
 
     public Upgrade GetUpgradeByType(UpgradeTypes type)
@@ -155,14 +136,19 @@ public class TurretUpgrades : MonoBehaviour
         return upgrades.Find(x => x.type == type);
     }
     
-    private void UpgradeTurret(Upgrade upgrade)
+    public void UpgradeTurret()
     {
-        turretLevel++;
-        upgrade.LevelUp();
 
-        if(UpgradeSuccess != null)
+        // TODO store upgrade cost somewhere in JSON as INT
+        if (GameManager.Instance.SpendGold(100))
         {
-            UpgradeSuccess(upgrade, turret);
+            turretLevel++;
+            UpgradeAll();
+            CalculateTierUpgradeCost();
+            if (UpgradeSuccess != null)
+            {
+                UpgradeSuccess(turret);
+            }
         }
     }
 }

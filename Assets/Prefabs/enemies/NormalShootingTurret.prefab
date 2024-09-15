@@ -191,6 +191,7 @@ MonoBehaviour:
   baseDamage: 10
   damageType: 0
   cost: 100
+  upgradesConfigFile: TurretUpgradeData/NormalTurretUpgrades
   spriteRenderer: {fileID: 4970361592607226332}
   upgrades: {fileID: 0}
   upgradesMenu: {fileID: 5066242826788986625}
