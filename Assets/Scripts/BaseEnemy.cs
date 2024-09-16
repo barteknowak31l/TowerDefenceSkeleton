@@ -62,10 +62,10 @@ public abstract class BaseEnemy : MonoBehaviour
     }
 
 
-    // TODO separate methods to take fire/electric/ice damage ??? - some part of this mechanic (more related to bullets) might be
-    // implemented in BaseBullet.OnEnemyContact() or its derivatives
+	/* TODO separate methods to take fire/electric/ice damage ??? - some part of this mechanic (more related to bullets) might be
+     implemented in BaseBullet.OnEnemyContact() or its derivatives */
 
-    public virtual void DealDamage(DamageInfo damageInfo)
+	public virtual void DealDamage(DamageInfo damageInfo)
     {
         Debug.Log(damageInfo.damageSource);
 
