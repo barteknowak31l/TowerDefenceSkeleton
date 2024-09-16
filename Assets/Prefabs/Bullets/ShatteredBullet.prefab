@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6118921523829576527}
   - component: {fileID: 1995477292870852164}
-  - component: {fileID: 8949048607856217193}
+  - component: {fileID: -5625678500081260925}
   - component: {fileID: 7294001383743652737}
   - component: {fileID: 773457354579460199}
   m_Layer: 7
-  m_Name: NormalBullet
+  m_Name: ShatteredBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8949048607856217193
+--- !u!114 &-5625678500081260925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,15 +96,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3345374331062768013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c659914465f6168438abb204648e4475, type: 3}
+  m_Script: {fileID: 11500000, guid: e8a5d734aa076e2409972958157c0837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 100
+  bulletSpeed: 10
   target: {fileID: 0}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  spriteRenderer: {fileID: 1995477292870852164, guid: ecd4a4bd774ea114fab3df9b91f69d14, type: 3}
+  spriteRenderer: {fileID: 1995477292870852164}
   rigid: {fileID: 7294001383743652737}
 --- !u!50 &7294001383743652737
 Rigidbody2D:

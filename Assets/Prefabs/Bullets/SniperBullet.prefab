@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6118921523829576527}
   - component: {fileID: 1995477292870852164}
-  - component: {fileID: 8949048607856217193}
   - component: {fileID: 7294001383743652737}
+  - component: {fileID: -2109412105341009870}
   - component: {fileID: 773457354579460199}
   m_Layer: 7
-  m_Name: NormalBullet
+  m_Name: SniperBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,25 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8949048607856217193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3345374331062768013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c659914465f6168438abb204648e4475, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 100
-  target: {fileID: 0}
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 64
-  spriteRenderer: {fileID: 1995477292870852164, guid: ecd4a4bd774ea114fab3df9b91f69d14, type: 3}
-  rigid: {fileID: 7294001383743652737}
 --- !u!50 &7294001383743652737
 Rigidbody2D:
   serializedVersion: 4
@@ -133,6 +114,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &-2109412105341009870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3345374331062768013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b08fe0f7286f4064f88fb1b5b63ec86f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 10
+  target: {fileID: 0}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+  spriteRenderer: {fileID: 1995477292870852164}
+  rigid: {fileID: 7294001383743652737}
+  firingPoint: {fileID: 0}
+  bulletPrefab: {fileID: 3345374331062768013, guid: ecd4a4bd774ea114fab3df9b91f69d14, type: 3}
+  fanAngle: 20
+  projectileCount: 3
+  projectileSpeed: 5
 --- !u!61 &773457354579460199
 BoxCollider2D:
   m_ObjectHideFlags: 0
