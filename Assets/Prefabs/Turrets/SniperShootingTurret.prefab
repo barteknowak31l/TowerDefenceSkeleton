@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 272510760701098682}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.29, z: -1}
-  m_LocalScale: {x: 0.3, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0.45, z: -1}
+  m_LocalScale: {x: 0.16801548, y: 0.52414143, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4172771561899587691}
@@ -95,10 +95,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4267328000703159246}
   - component: {fileID: 4970361592607226332}
+  - component: {fileID: 4176527948955005538}
   - component: {fileID: 3719948324695173084}
   - component: {fileID: 6101057094167732800}
   m_Layer: 0
-  m_Name: NormalShootingTurret
+  m_Name: SniperShootingTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,7 +174,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3719948324695173084
+--- !u!114 &4176527948955005538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,17 +183,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 5747669215713771348}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25772bc62b3f6aa44af6832b8adbeffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseRange: 5
+  range: 5
+  damage: 3
+  baseDamage: 3
+  baseFireCooldown: 2
+  fireCooldown: 2
+  damageType: 0
+  damageSource: 2
+  cost: 100
+  upgradesConfigFile: TurretUpgradeData/NormalTurretUpgrades
+  spriteRenderer: {fileID: 4970361592607226332}
+  upgrades: {fileID: 0}
+  upgradesMenu: {fileID: 5066242826788986625}
+  upgradesMenuRectTransform: {fileID: 0}
+  rotationSpeed: 200
+  rotationPoint: {fileID: 1389588656270255927}
+  firingPoint: {fileID: 4172771561899587691}
+  bulletPrefab: {fileID: 3345374331062768013, guid: e42821ca5af224942abcc8fbdb3fafe4, type: 3}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &3719948324695173084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747669215713771348}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f66ee6d39d52da479998e5d9b83655c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseRange: 3
-  range: 3
+  baseRange: 5
+  range: 5
   damage: 10
   baseDamage: 10
   baseFireCooldown: 1
   fireCooldown: 0
   damageType: 0
-  damageSource: 1
+  damageSource: 2
   cost: 100
   upgradesConfigFile: TurretUpgradeData/NormalTurretUpgrades
   spriteRenderer: {fileID: 4970361592607226332}
