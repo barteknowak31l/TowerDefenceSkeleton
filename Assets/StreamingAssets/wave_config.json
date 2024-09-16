@@ -17,8 +17,8 @@
             "name": "Wave 2",
             "enemies": [
                 {
-                    "amount": 10,
-                    "enemyType": "IceEnemy"
+                    "amount": 1,
+                    "enemyType": "IceBoss"
                 }
             ]
         }
