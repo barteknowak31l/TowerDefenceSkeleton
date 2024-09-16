@@ -13,10 +13,31 @@ public abstract class BaseTurret : MonoBehaviour
     [SerializeField] protected float baseDamage;
     [SerializeField] protected float baseFireCooldown;
     [SerializeField] protected float fireCooldown;
+    protected float fireCooldownTimer;
     [SerializeField] protected DamageType damageType = DamageType.normal;
     [SerializeField] protected DamageSource damageSource;
     [SerializeField] protected int cost = 100;
     [SerializeField] public string upgradesConfigFile;
+
+    [Header("Boss Passives")]
+    [SerializeField] protected float bossPassiveRetentionTime;
+    private float bossPassiveRetentionTimer;
+
+    [Header("IceBoss Passive")]
+    [SerializeField] protected bool iceBossPassiveIsUp;
+    [SerializeField] protected float iceBossSlowPenaltyMultiplier;
+    
+    [Header("FireBoss Passive")]
+    [SerializeField] protected bool fireBossPassiveIsUp;
+
+    [Header("ElectricBoss Passive")]
+    [SerializeField] protected bool electricBossPassiveIsUp;
+    [SerializeField] protected bool isStunned;
+    [SerializeField] protected float stunDuration;
+    [SerializeField] protected float gracePeriod;
+    [SerializeField] protected float gracePeriodTimer;
+
+
 
 
 
@@ -28,16 +49,22 @@ public abstract class BaseTurret : MonoBehaviour
     private Camera mainCamera;
     private bool upgradesMenuOpen = false;
     private static BaseTurret currentlyOpenMenu = null;
-   private bool menuPositionChanged = false;
+    private bool menuPositionChanged = false;
+  
+    
     protected virtual void Start()
     {
   
         upgradesMenuRectTransform = upgradesMenu.GetComponent<RectTransform>();
         mainCamera = Camera.main;
 
-        CalculateFireCooldown();
-        CalculateDamage();
-        CalculateRange();
+
+        RecalculateStats();
+        fireCooldownTimer = fireCooldown;
+        bossPassiveRetentionTimer = bossPassiveRetentionTime;
+        isStunned = false;
+        gracePeriodTimer = gracePeriod;
+
     }
 
 
@@ -48,10 +75,60 @@ public abstract class BaseTurret : MonoBehaviour
     }
 
 
+    protected virtual void Update()
+    {
+        if(bossPassiveRetentionTimer > -1f)
+            bossPassiveRetentionTimer -= Time.deltaTime;
+
+
+
+        if(bossPassiveRetentionTimer < 0f &&
+            (electricBossPassiveIsUp || fireBossPassiveIsUp || iceBossPassiveIsUp)
+            )
+        {
+            DisableBossPassives();
+        }
+
+
+        if (gracePeriodTimer > 0f)
+        {
+            gracePeriodTimer -= Time.deltaTime;
+        }
+        
+
+        if (electricBossPassiveIsUp&& gracePeriodTimer <= 0f)
+        {
+            isStunned = true;
+            StartCoroutine(removeStun());
+
+        }
+
+    }
+
+    private IEnumerator removeStun()
+    {
+        yield return new WaitForSeconds(stunDuration);
+        isStunned= false;
+        gracePeriodTimer = gracePeriod;
+    }
+
+    protected void RecalculateStats()
+    {
+        CalculateFireCooldown();
+        CalculateDamage();
+        CalculateRange();
+    }
+
     protected virtual void CalculateFireCooldown()
     {
         baseFireCooldown = upgrades.GetUpgradeByType(UpgradeTypes.attackSpeed).value;
         fireCooldown = baseFireCooldown;
+        if (iceBossPassiveIsUp)
+        {
+            fireCooldown = fireCooldown * iceBossSlowPenaltyMultiplier;
+        }
+
+
     }
 
     protected virtual void CalculateDamage()
@@ -174,6 +251,46 @@ public abstract class BaseTurret : MonoBehaviour
     public int GetTurretLevel()
     {
         return upgrades.turretLevel;
+    }
+
+    public virtual void ApplyBossPassiveEffect(BossPassiveType type)
+    {
+        switch(type)
+        {
+            case BossPassiveType.FireBossPassive: break;
+            case BossPassiveType.IceBossPassive: ApplyIceBossPassive(); break;
+            case BossPassiveType.ElectricBossPassive: ApplyElectricBossPassive(); break;
+            default: Debug.Log(string.Format("Unreckognized Boss Passive Effect: {0}",type.ToString())); break; 
+        }
+    }
+
+    private void DisableBossPassives()
+    {
+        electricBossPassiveIsUp = false;
+        fireBossPassiveIsUp = false;
+        iceBossPassiveIsUp = false;
+
+        RecalculateStats();
+    }
+
+    private void ApplyIceBossPassive()
+    {
+        CalculateFireCooldown();
+        bossPassiveRetentionTimer = bossPassiveRetentionTime;
+        iceBossPassiveIsUp = true;
+
+    }
+
+    private void ApplyElectricBossPassive()
+    {
+        bossPassiveRetentionTimer = bossPassiveRetentionTime;
+        electricBossPassiveIsUp = true;
+    }
+
+    private void ApplyFireBossPassive()
+    {
+        bossPassiveRetentionTimer = bossPassiveRetentionTime;
+        fireBossPassiveIsUp = true;
     }
 
 }
