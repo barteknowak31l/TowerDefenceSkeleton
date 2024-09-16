@@ -18,6 +18,15 @@
             "enemies": [
                 {
                     "amount": 1,
+                    "enemyType": "ElectricBoss"
+                }
+            ]
+        },
+        {
+            "name": "Wave 3",
+            "enemies": [
+                {
+                    "amount": 1,
                     "enemyType": "IceBoss"
                 }
             ]
