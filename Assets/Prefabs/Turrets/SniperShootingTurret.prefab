@@ -188,8 +188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseRange: 5
   range: 5
-  damage: 3
-  baseDamage: 3
+  damage: 1
+  baseDamage: 1
   baseFireCooldown: 2
   fireCooldown: 2
   damageType: 0
