@@ -19,13 +19,12 @@ public abstract class BaseShootingTurret : BaseTurret
     protected virtual void Shoot()
     {
         Debug.Log(string.Format("{0} SHOOT", name));
-        fireCooldown = baseFireCooldown;
+        fireCooldownTimer = fireCooldown;
     }
 
     protected override void Start()
     {
         base.Start();
-        fireCooldown = 0f;
     }
 
     protected override void OnEnable()
@@ -34,10 +33,14 @@ public abstract class BaseShootingTurret : BaseTurret
         upgrades.UpgradeSuccess += HandleUpgradeEvent;
     }
 
-    protected virtual void Update()
+    protected override void Update()
     {
-        if(fireCooldown > -1f)
-        fireCooldown -= Time.deltaTime;
+        base.Update();
+
+        if (isStunned) { return; }
+
+        if(fireCooldownTimer > -1f)
+            fireCooldownTimer -= Time.deltaTime;
 
         if (target == null)
         {
@@ -53,7 +56,7 @@ public abstract class BaseShootingTurret : BaseTurret
         }
         else
         {
-            if(fireCooldown < 0f)
+            if(fireCooldownTimer < 0f)
             {
                 Shoot();
             }

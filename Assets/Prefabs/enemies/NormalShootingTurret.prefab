@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 3719948324695173084}
   - component: {fileID: 6101057094167732800}
   m_Layer: 0
+  m_Layer: 8
   m_Name: NormalShootingTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,10 +192,23 @@ MonoBehaviour:
   baseDamage: 10
   baseFireCooldown: 1
   fireCooldown: 0
+<<<<<<< HEAD
   damageType: 2
+=======
+  damageType: 0
+>>>>>>> main
   damageSource: 1
   cost: 100
   upgradesConfigFile: TurretUpgradeData/NormalTurretUpgrades
+  bossPassiveRetentionTime: 3
+  iceBossPassiveIsUp: 0
+  iceBossSlowPenaltyMultiplier: 2
+  fireBossPassiveIsUp: 0
+  electricBossPassiveIsUp: 0
+  isStunned: 0
+  stunDuration: 2
+  gracePeriod: 2
+  gracePeriodTimer: 0
   spriteRenderer: {fileID: 4970361592607226332}
   upgrades: {fileID: 0}
   upgradesMenu: {fileID: 5066242826788986625}
