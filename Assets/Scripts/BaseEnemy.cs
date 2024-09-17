@@ -10,6 +10,7 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField] protected float maxHp = 10;
     [SerializeField] protected float currentHp;
     [SerializeField] protected float movementSpeed = 1;
+    [SerializeField] protected float baseMovementSpeed = 1;
     [SerializeField] protected int goldDropped = 50;
 
 
@@ -31,6 +32,7 @@ public abstract class BaseEnemy : MonoBehaviour
     protected virtual void Setup()
     {
         currentHp = maxHp;
+        movementSpeed = baseMovementSpeed;
         WaveSpawner.Instance.enemiesAlive++;
     }
 
