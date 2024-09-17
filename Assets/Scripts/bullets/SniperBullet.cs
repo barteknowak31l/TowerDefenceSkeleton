@@ -14,6 +14,7 @@ public class SniperBullet : BaseBullet
 
 	protected override void OnEnemyContact(BaseEnemy enemy, DamageInfo damageInfo)
     {
+		enemy.
         enemy.DealDamage(damageInfo);
 		ShootFan();
 		Destroy(gameObject);
@@ -34,6 +35,7 @@ public class SniperBullet : BaseBullet
 			GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
 			BaseBullet bullet = bulletObj.GetComponent<BaseBullet>();
 			bullet.SetDamageInfo(damageInfo);
+
 			Rigidbody2D rb = bulletObj.GetComponent<Rigidbody2D>();
 			rb.velocity = direction * projectileSpeed;
 		}
