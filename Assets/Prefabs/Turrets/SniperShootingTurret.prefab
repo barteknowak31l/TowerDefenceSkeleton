@@ -188,8 +188,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseRange: 5
   range: 5
+<<<<<<< HEAD
   damage: 1
   baseDamage: 1
+=======
+  damage: 3
+  baseDamage: 3
+>>>>>>> origin/Create_Towerv2
   baseFireCooldown: 2
   fireCooldown: 2
   damageType: 0
