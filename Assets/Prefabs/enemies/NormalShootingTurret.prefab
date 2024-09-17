@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 4970361592607226332}
   - component: {fileID: 3719948324695173084}
   - component: {fileID: 6101057094167732800}
-  m_Layer: 0
   m_Layer: 8
   m_Name: NormalShootingTurret
   m_TagString: Untagged
