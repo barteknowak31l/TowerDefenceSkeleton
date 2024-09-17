@@ -172,8 +172,8 @@ public abstract class BaseTurret : MonoBehaviour
     // Draw range for debug
     private void OnDrawGizmosSelected()
     {
-        Handles.color = Color.green;
-        Handles.DrawWireDisc(transform.position, transform.forward, range);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 
     public int GetCost()
