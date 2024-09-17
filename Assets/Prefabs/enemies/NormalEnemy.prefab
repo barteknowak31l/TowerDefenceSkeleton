@@ -165,6 +165,27 @@ MonoBehaviour:
   currentHp: 0
   movementSpeed: 1
   goldDropped: 50
+  isFrozen: 0
+  freezeDuration: 2
+  freezeTimer: 0
+  shatterChance: 0.2
+  freezeStacks: 0
+  maxFreezeStacks: 5
+  freezeSlowPercentage: 0.1
+  timeSinceLastFreezeDamage: 0
+  freezeResetTime: 3
+  isRecentlyFrozen: 0
+  recentlyFrozenDuration: 3
+  recentlyFrozenTimer: 0
+  isIgnited: 0
+  igniteStacks: 0
+  maxIgniteStacks: 10
+  igniteDamage: 2
+  igniteInterval: 1
+  igniteResetTime: 3
+  timeSinceLastFireDamage: 0
+  fireResistance: 0
+  iceResistance: 0
   rigid: {fileID: 2760776928304613662}
   currentPathStage: -1
   movementDirection: {x: 0, y: 0}

@@ -13,6 +13,31 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField] protected float baseMovementSpeed = 1;
     [SerializeField] protected int goldDropped = 50;
 
+    [Header("Effects")]
+     protected bool isFrozen = false;
+    [SerializeField] protected float freezeDuration = 2f;
+     protected float freezeTimer = 0f;
+    [SerializeField] protected float shatterChance = 0.2f;
+    [SerializeField] protected int freezeStacks = 0;
+    [SerializeField] protected int maxFreezeStacks = 5; 
+    [SerializeField] protected float freezeSlowPercentage = 0.2f;
+     protected float timeSinceLastFreezeDamage = 0f;
+    [SerializeField] protected float freezeResetTime = 3.0f;
+    protected bool isRecentlyFrozen = false;
+     protected float recentlyFrozenDuration = 3.0f;
+    protected float recentlyFrozenTimer = 0f;
+     protected bool isIgnited = false;
+     protected int igniteStacks = 0;
+    [SerializeField] protected int maxIgniteStacks = 10;
+    [SerializeField] protected float igniteDamage = 2f;
+    [SerializeField] protected float igniteInterval = 1f;
+    [SerializeField]  protected float igniteResetTime = 3.0f;
+     protected float timeSinceLastFireDamage = 0f;
+
+    [Header("Resistance")]
+    [SerializeField] protected float fireResistance = 0.0f; 
+    [SerializeField] protected float iceResistance = 0.0f;
+    private Coroutine igniteCoroutine;
 
     [Header("Navigation/Movement")]
     [SerializeField] protected Rigidbody2D rigid;
@@ -24,6 +49,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
     protected virtual void Start()
     {
+        baseMovementSpeed=movementSpeed;
         rigid = GetComponent<Rigidbody2D>();
         Setup();
         findNextDestinationPoint();
@@ -38,20 +64,52 @@ public abstract class BaseEnemy : MonoBehaviour
 
     protected virtual void Update()
     {
-
-        Vector2 distanceToNextStage = new Vector2(transform.position.x - nextPathStage.position.x,
-            transform.position.y - nextPathStage.position.y);
-
-        if (!isOnLastStage && distanceToNextStage.magnitude < 0.1f )
+        if (isFrozen)
         {
-            findNextDestinationPoint();
-        }
-        else if (isOnLastStage && distanceToNextStage.magnitude < 0.1f)
-        {
-            DestroyEnemy();
-        }
+            freezeTimer -= Time.deltaTime;
+            if (freezeTimer <= 0)
+            {
+                freezeStacks = 0;
 
-        Move();
+                movementSpeed = baseMovementSpeed;
+                isFrozen = false; 
+                isRecentlyFrozen = true; 
+                timeSinceLastFreezeDamage = 0;
+                recentlyFrozenTimer =0;
+            }
+        }
+        else
+        {
+            timeSinceLastFreezeDamage += Time.deltaTime;
+            if (isRecentlyFrozen)
+            {
+                recentlyFrozenTimer += Time.deltaTime;
+                if (recentlyFrozenTimer >= recentlyFrozenDuration)
+                {
+                    isRecentlyFrozen = false; 
+                }
+            }
+            if (timeSinceLastFreezeDamage >= freezeResetTime && freezeStacks > 0)
+            {
+                freezeStacks = 0;
+
+                movementSpeed = baseMovementSpeed; 
+               
+            }
+            Vector2 distanceToNextStage = new Vector2(transform.position.x - nextPathStage.position.x,
+                transform.position.y - nextPathStage.position.y);
+
+            if (!isOnLastStage && distanceToNextStage.magnitude < 0.1f)
+            {
+                findNextDestinationPoint();
+            }
+            else if (isOnLastStage && distanceToNextStage.magnitude < 0.1f)
+            {
+                DestroyEnemy();
+            }
+
+            Move();
+        }
     }
     protected virtual void DestroyEnemy(bool dropGold = false)
     {
@@ -95,6 +153,13 @@ public abstract class BaseEnemy : MonoBehaviour
 
     protected virtual void DealIceDamage(DamageInfo damageInfo)
     {
+        timeSinceLastFreezeDamage = 0;
+        float damageAfterResistance = damageInfo.amount * (1.0f - iceResistance);
+        ShatterChance(shatterChance);
+        currentHp -= damageAfterResistance;
+    
+        AddFreezeStack();
+
         switch (damageInfo.damageSource)
         {
             case DamageSource.singleTurret:             ; break;
@@ -107,6 +172,12 @@ public abstract class BaseEnemy : MonoBehaviour
 
     protected virtual void DealFireDamage(DamageInfo damageInfo)
     {
+        float damageAfterResistance = damageInfo.amount * (1.0f - fireResistance);
+
+        currentHp -= damageAfterResistance;
+
+        AddIgniteStack();
+
         switch (damageInfo.damageSource)
         {
             case DamageSource.singleTurret:; break;
@@ -127,6 +198,94 @@ public abstract class BaseEnemy : MonoBehaviour
             case DamageSource.auraTurret:; break;
             default: Debug.Log(string.Format("Unrecognized Damage Source: {}", damageInfo.damageSource.ToString())); break;
         }
+    }
+    protected void ShatterChance(float shatterChance)
+    {
+        if (UnityEngine.Random.value < shatterChance && isFrozen)
+        {
+            DestroyEnemy(true);
+        }
+
+    }  
+    
+    protected void AddFreezeStack()
+    {
+        if (isFrozen || isRecentlyFrozen)
+        {
+            if (freezeStacks < maxFreezeStacks)
+            {
+                freezeStacks++;
+                movementSpeed = baseMovementSpeed * (1 - freezeStacks * freezeSlowPercentage);
+            }
+        }
+        else
+        {
+            if (freezeStacks+1 >= maxFreezeStacks)
+            {
+                Freeze();
+            }
+            else
+            {
+                freezeStacks++;
+                movementSpeed = baseMovementSpeed * (1 - freezeStacks * freezeSlowPercentage);
+                timeSinceLastFreezeDamage = 0;
+            }
+        }
+
+    }
+
+
+    protected void Freeze()
+    {
+        isFrozen = true;
+        freezeTimer = freezeDuration;
+        rigid.velocity = Vector2.zero;
+        movementSpeed = 0;
+
+    }
+
+    protected void AddIgniteStack()
+    {
+        if (igniteStacks < maxIgniteStacks)
+        {
+            timeSinceLastFireDamage = 0;
+
+            igniteStacks++;
+            if (!isIgnited)
+            {
+                igniteCoroutine = StartCoroutine(IgniteDamageOverTime());
+            }
+        }
+    }
+
+    protected IEnumerator IgniteDamageOverTime()
+    {
+        isIgnited = true;
+
+        while (igniteStacks > 0)
+        {
+            float damageAfterResistance = igniteDamage * igniteStacks * (1.0f - fireResistance);
+            currentHp -= damageAfterResistance;
+            if (currentHp <= 0)
+            {
+                DestroyEnemy(true);
+                yield break;
+            }
+
+            yield return new WaitForSeconds(igniteInterval);
+
+            timeSinceLastFireDamage += igniteInterval;
+
+            if (timeSinceLastFireDamage >= igniteResetTime)
+            {
+            
+                igniteStacks = 0;
+                break;
+            }
+        }
+
+        isIgnited = false;
+        igniteStacks = 0;
     }
 
     protected void findNextDestinationPoint()
