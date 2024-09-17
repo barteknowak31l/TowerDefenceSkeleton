@@ -130,6 +130,27 @@ MonoBehaviour:
   currentHp: 0
   movementSpeed: 0.5
   goldDropped: 500
+  isFrozen: 0
+  freezeDuration: 2
+  freezeTimer: 0
+  shatterChance: 0.2
+  freezeStacks: 0
+  maxFreezeStacks: 5
+  freezeSlowPercentage: 0.2
+  timeSinceLastFreezeDamage: 0
+  freezeResetTime: 3
+  isRecentlyFrozen: 0
+  recentlyFrozenDuration: 3
+  recentlyFrozenTimer: 0
+  isIgnited: 0
+  igniteStacks: 0
+  maxIgniteStacks: 10
+  igniteDamage: 2
+  igniteInterval: 1
+  igniteResetTime: 3
+  timeSinceLastFireDamage: 0
+  fireResistance: 0
+  iceResistance: 0
   rigid: {fileID: 736906729241290397}
   currentPathStage: -1
   movementDirection: {x: 0, y: 0}
@@ -139,7 +160,7 @@ MonoBehaviour:
   passiveEffectCooldown: 0.1
   turretsMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   bossPassiveType: 0
 --- !u!58 &1283887234504062994
 CircleCollider2D:
