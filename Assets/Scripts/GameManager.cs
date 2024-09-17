@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Transform enemySpawnPoint;
     [SerializeField] public Transform[] enemyPathPoints;
 
+    [Header("Spawners")]
+    [SerializeField] public List<SpawnerData> spawners;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -39,6 +42,11 @@ public class GameManager : MonoBehaviour
     public void AddGold(int amount)
     {
         gold += amount;
+    }
+
+    public Transform GetSpawnerPathPoint(int spawner, int pathPoint)
+    {
+        return spawners[spawner].transforms[pathPoint];
     }
         
 

@@ -45,6 +45,8 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField] protected Vector2 movementDirection;
     [SerializeField] protected bool isOnLastStage = false;
     [SerializeField] protected Transform nextPathStage;
+    [SerializeField] protected int spawnerNumber;
+
 
 
     protected virtual void Start()
@@ -52,7 +54,7 @@ public abstract class BaseEnemy : MonoBehaviour
         baseMovementSpeed=movementSpeed;
         rigid = GetComponent<Rigidbody2D>();
         Setup();
-        findNextDestinationPoint();
+        //findNextDestinationPoint();
     }
 
     protected virtual void Setup()
@@ -288,7 +290,7 @@ public abstract class BaseEnemy : MonoBehaviour
         igniteStacks = 0;
     }
 
-    protected void findNextDestinationPoint()
+    public void findNextDestinationPoint()
     {
         // find current and next points from GameManager
         // calculate direction vector between them
@@ -298,8 +300,8 @@ public abstract class BaseEnemy : MonoBehaviour
 
         if (currentPathStage == -1)
         {
-            currentPoint = GameManager.Instance.enemySpawnPoint;
-            nextPathStage = GameManager.Instance.enemyPathPoints[0];
+            currentPoint = GameManager.Instance.GetSpawnerPathPoint(spawnerNumber, 0);
+            nextPathStage = GameManager.Instance.GetSpawnerPathPoint(spawnerNumber, currentPathStage + 1);
 
         }
         else
@@ -307,7 +309,7 @@ public abstract class BaseEnemy : MonoBehaviour
             currentPoint = nextPathStage;
             if (!isOnLastStage)
             {
-                nextPathStage = GameManager.Instance.enemyPathPoints[currentPathStage + 1];
+                nextPathStage = GameManager.Instance.GetSpawnerPathPoint(spawnerNumber, currentPathStage + 1);
 
             }
         }
@@ -323,5 +325,10 @@ public abstract class BaseEnemy : MonoBehaviour
     protected void Move()
     {
         rigid.velocity = movementDirection * movementSpeed;
+    }
+
+    public void SetSpawnerNumber(int number)
+    {
+        spawnerNumber = number;
     }
 }
