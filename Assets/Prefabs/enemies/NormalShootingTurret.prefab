@@ -189,7 +189,9 @@ MonoBehaviour:
   range: 3
   damage: 10
   baseDamage: 10
-  damageType: 0
+  baseFireCooldown: 1
+  fireCooldown: 0
+  damageType: 2
   damageSource: 1
   cost: 100
   upgradesConfigFile: TurretUpgradeData/NormalTurretUpgrades
@@ -198,7 +200,6 @@ MonoBehaviour:
   upgradesMenu: {fileID: 5066242826788986625}
   upgradesMenuRectTransform: {fileID: 0}
   rotationSpeed: 200
-  baseFireCooldown: 1
   rotationPoint: {fileID: 1389588656270255927}
   firingPoint: {fileID: 4172771561899587691}
   bulletPrefab: {fileID: 3345374331062768013, guid: 64e2b23edbae0b14b87d64b8b5b9e70b, type: 3}
