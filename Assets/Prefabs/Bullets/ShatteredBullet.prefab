@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5625678500081260925}
   - component: {fileID: 7294001383743652737}
   - component: {fileID: 773457354579460199}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: ShatteredBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
