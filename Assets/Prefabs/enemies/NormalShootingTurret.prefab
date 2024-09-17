@@ -191,11 +191,7 @@ MonoBehaviour:
   baseDamage: 10
   baseFireCooldown: 1
   fireCooldown: 0
-<<<<<<< HEAD
-  damageType: 2
-=======
   damageType: 0
->>>>>>> main
   damageSource: 1
   cost: 100
   upgradesConfigFile: TurretUpgradeData/NormalTurretUpgrades
