@@ -15,6 +15,7 @@ public class WaveEnemy
 public class Wave
 {
     public string name;
+    public int[] spawners;
     public WaveEnemy[] enemies;
 
     public void PrintData()
@@ -68,9 +69,16 @@ public class WaveListElement
     public List<WaveEnemy> enemies { get; private set; }
     public string name { get; set; }
 
+    public List<int> spawners { get; private set; }
+
     public void SetEnemiesList(WaveEnemy[] enemies)
     {
         this.enemies = new List<WaveEnemy>(enemies);
+    }
+
+    public void SetSpawnersList(int[] spawners)
+    {
+        this.spawners = new List<int>(spawners);
     }
 
     public WaveEnemy GetRandomEnemyAndDecreaseAmount()
@@ -88,6 +96,8 @@ public class WaveListElement
 
 
 }
+
+[System.Serializable]
 public class WaveList
 {
     public List<WaveListElement> waves { get; private set; }
@@ -105,6 +115,7 @@ public class WaveList
             WaveListElement newElement = new WaveListElement();
             newElement.name = wave.name;
             newElement.SetEnemiesList(wave.enemies);
+            newElement.SetSpawnersList(wave.spawners);
             waves.Add(newElement);
         }
     }

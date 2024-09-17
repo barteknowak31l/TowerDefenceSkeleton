@@ -1,33 +1,23 @@
 {
     "waves": [
+
         {
-            "name": "Wave 1",
+            "name": "Wave 2",
+	    "spawners": [0],
             "enemies": [
                 {
                     "amount": 5,
                     "enemyType": "NormalEnemy"
-                },
-                {
-                    "amount": 5,
-                    "enemyType": "FireEnemy"
-                }
-            ]
-        },
-        {
-            "name": "Wave 2",
-            "enemies": [
-                {
-                    "amount": 1,
-                    "enemyType": "ElectricBoss"
                 }
             ]
         },
         {
             "name": "Wave 3",
+	    "spawners": [0,1],
             "enemies": [
                 {
-                    "amount": 1,
-                    "enemyType": "IceBoss"
+                    "amount": 5,
+                    "enemyType": "NormalEnemy"
                 }
             ]
         }
