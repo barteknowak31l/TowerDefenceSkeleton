@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FastShootingTurret : BaseShootingTurret
+public class ExplosiveShootingTurret : BaseShootingTurret
 {
 	protected override void Shoot()
 	{
