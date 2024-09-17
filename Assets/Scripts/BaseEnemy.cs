@@ -14,25 +14,25 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField] protected int goldDropped = 50;
 
     [Header("Effects")]
-    [SerializeField] protected bool isFrozen = false;
+     protected bool isFrozen = false;
     [SerializeField] protected float freezeDuration = 2f;
-    [SerializeField] protected float freezeTimer = 0f;
+     protected float freezeTimer = 0f;
     [SerializeField] protected float shatterChance = 0.2f;
     [SerializeField] protected int freezeStacks = 0;
     [SerializeField] protected int maxFreezeStacks = 5; 
     [SerializeField] protected float freezeSlowPercentage = 0.2f;
-    [SerializeField] protected float timeSinceLastFreezeDamage = 0f;
+     protected float timeSinceLastFreezeDamage = 0f;
     [SerializeField] protected float freezeResetTime = 3.0f;
-    [SerializeField] protected bool isRecentlyFrozen = false;
-    [SerializeField] protected float recentlyFrozenDuration = 3.0f;
-    [SerializeField] protected float recentlyFrozenTimer = 0f;
-    [SerializeField] protected bool isIgnited = false;
-    [SerializeField] protected int igniteStacks = 0;
+    protected bool isRecentlyFrozen = false;
+     protected float recentlyFrozenDuration = 3.0f;
+    protected float recentlyFrozenTimer = 0f;
+     protected bool isIgnited = false;
+     protected int igniteStacks = 0;
     [SerializeField] protected int maxIgniteStacks = 10;
     [SerializeField] protected float igniteDamage = 2f;
     [SerializeField] protected float igniteInterval = 1f;
     [SerializeField]  protected float igniteResetTime = 3.0f;
-    [SerializeField] protected float timeSinceLastFireDamage = 0f;
+     protected float timeSinceLastFireDamage = 0f;
 
     [Header("Resistance")]
     [SerializeField] protected float fireResistance = 0.0f; 
