@@ -50,7 +50,7 @@ public class WaveSpawner : MonoBehaviour
 
         //config.PrintData();
 
-        waves = new WaveList(config.waves ?? new Wave[0]); // U¿yj pustej tablicy, jeœli waves jest null
+        waves = new WaveList(config.waves ?? new Wave[0]); 
 
         Debug.Log(string.Format("waves count: {0}", waves.waves.Count));
         currentSpawnDelay = spawnDelay;
@@ -114,9 +114,13 @@ public class WaveSpawner : MonoBehaviour
             isSpawning = false;
         }
 
-        // TODO: implement enemy base class and its derivatives to spawn them here (spawn dispatcher)
-        Debug.Log(string.Format("Spawning enemy type: {0}, amount left to spawn: {1}", waveEnemy.enemyType, waveEnemy.amount));
-        enemySpawnDispatcher.Dispatch(waveEnemy.enemyType, GameManager.Instance.enemySpawnPoint, Quaternion.identity);
+
+        foreach (int spawner in currentWave.spawners)
+        {
+            Debug.Log(string.Format("Spawning enemy type: {0}, amount left to spawn: {1}", waveEnemy.enemyType, waveEnemy.amount));
+            enemySpawnDispatcher.Dispatch(waveEnemy.enemyType, spawner, Quaternion.identity);
+        }
+
     }
     void StartWaveBreak()
     {
