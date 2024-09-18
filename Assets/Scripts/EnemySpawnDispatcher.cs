@@ -16,8 +16,12 @@ public class EnemySpawnDispatcher : MonoBehaviour
 
             return;
         }
+      
+            WaveSpawner.Instance.enemiesAlive++;
 
+        
         Instantiate(enemyPrefab, spawnPoint.position, rotation);
+
     }
 
 

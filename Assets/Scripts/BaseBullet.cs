@@ -52,8 +52,12 @@ public abstract class BaseBullet : MonoBehaviour
         if (!hasEnemyBeenHit)
         {
             BaseEnemy enemy = collision.gameObject.GetComponent<BaseEnemy>();
-            OnEnemyContact(enemy, damageInfo);
-            hasEnemyBeenHit = true;
+            if (enemy != null)
+            {
+                OnEnemyContact(enemy, damageInfo);
+                hasEnemyBeenHit = true;
+
+            }
 
         }
     }
