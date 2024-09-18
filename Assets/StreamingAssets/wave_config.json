@@ -2,8 +2,18 @@
     "waves": [
 
         {
+            "name": "Wave 1",
+	    "spawners": [0,1],
+            "enemies": [
+                {
+                    "amount": 5,
+                    "enemyType": "NormalEnemy"
+                }
+            ]
+        },
+        {
             "name": "Wave 2",
-	    "spawners": [0],
+	    "spawners": [2,3,4,5,6],
             "enemies": [
                 {
                     "amount": 5,
@@ -13,7 +23,7 @@
         },
         {
             "name": "Wave 3",
-	    "spawners": [0,1],
+	    "spawners": [7,8,9,10,11,12,13,14],
             "enemies": [
                 {
                     "amount": 5,

@@ -19,6 +19,12 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float currentBreakTime = 0.0f;
     private bool isInBreak = false;
 
+
+    [Header("BossWaves")]
+    [SerializeField] public int boss1Wave;
+    [SerializeField] public int boss2Wave;
+    [SerializeField] public int boss3Wave;
+
     private EnemySpawnDispatcher enemySpawnDispatcher;
     public GameObject skipButton;
     public static WaveSpawner Instance { get; private set; }
@@ -125,7 +131,17 @@ public class WaveSpawner : MonoBehaviour
     void StartWaveBreak()
     {
         isInBreak = true; 
-        currentBreakTime = breakDuration; 
+        currentBreakTime = breakDuration;
+        if (waveNumber == boss1Wave)
+        {
+            Camera.main.transform.GetComponent<CameraZoomer>().ChangeCameraSize(1);
+        }
+        else if (waveNumber == boss2Wave)
+        {
+            Camera.main.transform.GetComponent<CameraZoomer>().ChangeCameraSize(2);
+        }
+
+
     }
 
     void HandleWaveBreak()
