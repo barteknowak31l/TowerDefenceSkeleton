@@ -13,7 +13,7 @@
         },
         {
             "name": "Wave 3",
-	    "spawners": [0,1],
+	    "spawners": [0],
             "enemies": [
                 {
                     "amount": 5,
