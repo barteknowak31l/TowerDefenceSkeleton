@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 272510760701098682}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.45, z: -1}
-  m_LocalScale: {x: 0.16801548, y: 0.52414143, z: 1}
+  m_LocalPosition: {x: 0, y: 0.29, z: -1}
+  m_LocalScale: {x: 0.3, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4172771561899587691}
@@ -95,10 +95,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4267328000703159246}
   - component: {fileID: 4970361592607226332}
-  - component: {fileID: 4176527948955005538}
+  - component: {fileID: 5180804542981926319}
   - component: {fileID: 6101057094167732800}
-  m_Layer: 0
-  m_Name: SniperShootingTurret
+  - component: {fileID: 2153167443444370391}
+  m_Layer: 8
+  m_Name: CannonTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,7 +174,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4176527948955005538
+--- !u!114 &5180804542981926319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,24 +183,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5747669215713771348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25772bc62b3f6aa44af6832b8adbeffd, type: 3}
+  m_Script: {fileID: 11500000, guid: a9fb4b3778ebfe842a7732cacb7b4800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseRange: 5
-  range: 5
-<<<<<<< HEAD
-  damage: 1
-  baseDamage: 1
-=======
-  damage: 3
-  baseDamage: 3
->>>>>>> origin/Create_Towerv2
-  baseFireCooldown: 2
-  fireCooldown: 2
+  baseRange: 0
+  range: 0
+  damage: 0
+  baseDamage: 0
+  baseFireCooldown: 0
+  fireCooldown: 0
   damageType: 0
-  damageSource: 2
+  damageSource: 0
   cost: 100
-  upgradesConfigFile: TurretUpgradeData/NormalTurretUpgrades
+  upgradesConfigFile: 
   bossPassiveRetentionTime: 0
   iceBossPassiveIsUp: 0
   iceBossSlowPenaltyMultiplier: 0
@@ -209,17 +205,17 @@ MonoBehaviour:
   stunDuration: 0
   gracePeriod: 0
   gracePeriodTimer: 0
-  spriteRenderer: {fileID: 4970361592607226332}
+  spriteRenderer: {fileID: 0}
   upgrades: {fileID: 0}
-  upgradesMenu: {fileID: 5066242826788986625}
+  upgradesMenu: {fileID: 0}
   upgradesMenuRectTransform: {fileID: 0}
   rotationSpeed: 200
-  rotationPoint: {fileID: 1389588656270255927}
-  firingPoint: {fileID: 4172771561899587691}
-  bulletPrefab: {fileID: 3345374331062768013, guid: e42821ca5af224942abcc8fbdb3fafe4, type: 3}
+  rotationPoint: {fileID: 0}
+  firingPoint: {fileID: 0}
+  bulletPrefab: {fileID: 3345374331062768013, guid: 91ea3046cb6f5bb4391b507c95caaaf5, type: 3}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
 --- !u!61 &6101057094167732800
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -265,6 +261,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!58 &2153167443444370391
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747669215713771348}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.0001
 --- !u!1 &6486078299973986460
 GameObject:
   m_ObjectHideFlags: 0

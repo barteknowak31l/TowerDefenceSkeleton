@@ -4,5 +4,4 @@ public enum DamageType
     fire,
     ice,
     electric,
-    shatter
 }
