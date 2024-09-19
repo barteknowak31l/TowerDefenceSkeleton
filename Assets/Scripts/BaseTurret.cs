@@ -41,7 +41,7 @@ public abstract class BaseTurret : MonoBehaviour
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected TurretUpgrades upgrades;
     [SerializeField] protected GameObject upgradesMenu;
-    [SerializeField] private RectTransform upgradesMenuRectTransform;
+    //[SerializeField] private RectTransform upgradesMenuRectTransform;
     private Camera mainCamera;
     private bool upgradesMenuOpen = false;
     private static BaseTurret currentlyOpenMenu = null;
@@ -55,7 +55,7 @@ public abstract class BaseTurret : MonoBehaviour
     protected virtual void Start()
     {
   
-        upgradesMenuRectTransform = upgradesMenu.GetComponent<RectTransform>();
+        //upgradesMenuRectTransform = upgradesMenu.GetComponent<RectTransform>();
         mainCamera = Camera.main;
 
 
@@ -210,7 +210,7 @@ public abstract class BaseTurret : MonoBehaviour
         return upgrades;
     }
 
-    private void OnMouseDown()
+/*    private void OnMouseDown()
     {
         if (currentlyOpenMenu != null && currentlyOpenMenu != this)
         {
@@ -228,49 +228,49 @@ public abstract class BaseTurret : MonoBehaviour
         {
             CloseUpgradesMenu();
         }
-    }
+    }*/
 
 
-    private void ShowUpgradesMenu()
-    {
-        upgradesMenu.SetActive(true);
-
-        if (menuPositionChanged == false)
+    /*    private void ShowUpgradesMenu()
         {
-            Vector3 currentPosition = upgradesMenuRectTransform.position;
+            upgradesMenu.SetActive(true);
 
-            if (upgradesMenuRectTransform.position.x > 0 && upgradesMenuRectTransform.position.y > 0)
+            if (menuPositionChanged == false)
             {
-                currentPosition.x -= 2.2f;
-                currentPosition.y -= 2.2f;
+                Vector3 currentPosition = upgradesMenuRectTransform.position;
+
+                if (upgradesMenuRectTransform.position.x > 0 && upgradesMenuRectTransform.position.y > 0)
+                {
+                    currentPosition.x -= 2.2f;
+                    currentPosition.y -= 2.2f;
+                }
+                else if (upgradesMenuRectTransform.position.x < 0 && upgradesMenuRectTransform.position.y > 0)
+                {
+                    currentPosition.y -= 2.2f;
+                }
+                else if (upgradesMenuRectTransform.position.x > 0 && upgradesMenuRectTransform.position.y < 0)
+                {
+                    currentPosition.x -= 2.2f;
+                }
+
+                upgradesMenuRectTransform.position = currentPosition;
+                menuPositionChanged = true;
+
             }
-            else if (upgradesMenuRectTransform.position.x < 0 && upgradesMenuRectTransform.position.y > 0)
-            {
-                currentPosition.y -= 2.2f;
-            }
-            else if (upgradesMenuRectTransform.position.x > 0 && upgradesMenuRectTransform.position.y < 0)
-            {
-                currentPosition.x -= 2.2f;
-            }
-
-            upgradesMenuRectTransform.position = currentPosition;
-            menuPositionChanged = true;
-
-        }
 
 
-    }
+        }*/
 
-    private void CloseUpgradesMenu()
-    {
-        upgradesMenu.SetActive(false);
-        upgradesMenuOpen = false;
-
-        if (currentlyOpenMenu == this)
+    /*    private void CloseUpgradesMenu()
         {
-            currentlyOpenMenu = null;
-        }
-    }
+            upgradesMenu.SetActive(false);
+            upgradesMenuOpen = false;
+
+            if (currentlyOpenMenu == this)
+            {
+                currentlyOpenMenu = null;
+            }
+        }*/
 
     public int GetTurretLevel()
     {
