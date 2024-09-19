@@ -13,10 +13,12 @@ public class ExplosiveBullet : BaseBullet
 
         foreach (var hitEnemy in hitEnemys)
         {
-            BaseEnemy baseEnemy = hitEnemy.GetComponent<BaseEnemy>();
+			DamageInfo newDamageInfo = new DamageInfo(damageInfo.damageType, DamageSource.bulletShatter, damageInfo.amount);
+			BaseEnemy newEnemy = hitEnemy.GetComponent<BaseEnemy>();
+			BaseEnemy baseEnemy = hitEnemy.GetComponent<BaseEnemy>();
 			if (baseEnemy != null)
 			{
-				baseEnemy.DealDamage(damageInfo);
+				baseEnemy.DealDamage(newDamageInfo);
 			}
         }
         Destroy(gameObject);
