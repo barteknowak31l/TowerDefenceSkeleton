@@ -49,7 +49,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
 
 
-    protected virtual void Start()
+	protected virtual void Start()
     {
         baseMovementSpeed=movementSpeed;
         rigid = GetComponent<Rigidbody2D>();
@@ -109,9 +109,12 @@ public abstract class BaseEnemy : MonoBehaviour
             {
                 DestroyEnemy();
             }
+			Vector2 normalizedDirection = distanceToNextStage.normalized;
+			float angle = Mathf.Atan2(normalizedDirection.y, normalizedDirection.x) * Mathf.Rad2Deg;
+			transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90f));
+			Move();
 
-            Move();
-        }
+		}
     }
     protected virtual void DestroyEnemy(bool dropGold = false)
     {
