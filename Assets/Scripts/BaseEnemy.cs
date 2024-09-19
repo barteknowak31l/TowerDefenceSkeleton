@@ -166,9 +166,9 @@ public abstract class BaseEnemy : MonoBehaviour
             case DamageSource.sniperTurret:
                 DealStandardIceDamage(damageInfo) ;
                 break;
-           // case DamageSource.shatteredBullet:
-           // DealStandardIceDamage(damageInfo) ;
-           // break;
+            case DamageSource.bulletShatter:
+            DealStandardIceDamage(damageInfo) ;
+            break;
             case DamageSource.cannonTurret:
                 DealStandardIceDamage(damageInfo) ; 
                 break;
@@ -204,9 +204,9 @@ public abstract class BaseEnemy : MonoBehaviour
             case DamageSource.sniperTurret:
                 AddMultipleIgniteStacks(4) ; 
                 break;
-            // case DamageSource.shatteredBullet:
-            // AddIgniteStack();
-            // break;
+             case DamageSource.bulletShatter:
+             AddIgniteStack();
+             break;
             case DamageSource.cannonTurret:
                 AddIgniteStack() ; 
                 break;

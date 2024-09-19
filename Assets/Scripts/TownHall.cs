@@ -15,34 +15,23 @@ public class TownHall : MonoBehaviour
     void Start()
     {
         currentHp = maxHp;
-     //   gameOverMenu.SetActive(false);
     }
 
-  
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IceBoss iceBoss = collision.gameObject.GetComponent<IceBoss>();
-        ElectricBoss electricBoss = collision.gameObject.GetComponent<ElectricBoss>();
+        BaseBoss baseBoss = collision.gameObject.GetComponent<BaseBoss>();
 
-        if (iceBoss != null)
+        if (baseBoss != null)
         {
 
             TakeDamage(bossDamage);
 
-            Destroy(iceBoss.gameObject);
+            Destroy(baseBoss.gameObject);
             return;
 
         }
 
-        if (electricBoss != null)
-        {
-            TakeDamage(bossDamage);
-
-            Destroy(electricBoss.gameObject);
-            return;
-
-
-        }
 
         BaseEnemy baseEnemy = collision.gameObject.GetComponent<BaseEnemy>();
         if (baseEnemy != null)
@@ -54,7 +43,7 @@ public class TownHall : MonoBehaviour
 
 
         }
-   
+
 
     }
 
@@ -70,7 +59,8 @@ public class TownHall : MonoBehaviour
 
     private void GameOver()
     {
-        Time.timeScale = 0;
+        GameManager.Instance.StopGame();
+
 
      //   gameOverMenu.SetActive(true);
 
