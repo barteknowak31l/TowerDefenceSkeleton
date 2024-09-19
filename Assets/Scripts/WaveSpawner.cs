@@ -73,6 +73,11 @@ public class WaveSpawner : MonoBehaviour
         }
      
         currentSpawnDelay -= Time.deltaTime;
+        if (!isSpawning && currentWave.enemies.Count <= 0 && enemiesAlive <= 0)
+        {
+            StartWaveBreak();
+
+        }
         if (currentSpawnDelay < 0 && isSpawning)
         {
             currentSpawnDelay = spawnDelay;
@@ -80,11 +85,7 @@ public class WaveSpawner : MonoBehaviour
         }
 
 
-        if (!isSpawning && currentWave.enemies.Count <= 0 && enemiesAlive <= 0)
-        {
-            StartWaveBreak();
-
-        }
+     
 
     }
 
@@ -115,6 +116,7 @@ public class WaveSpawner : MonoBehaviour
     void SpawnRandomEnemy()
     {
         WaveEnemy waveEnemy = currentWave.GetRandomEnemyAndDecreaseAmount();
+      
         if (currentWave.enemies.Count <= 0)
         {
             isSpawning = false;
