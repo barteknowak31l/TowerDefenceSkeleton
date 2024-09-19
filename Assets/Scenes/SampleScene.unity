@@ -13959,6 +13959,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 202552611960851984, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c851e7799eea0584e81130478ec9a884, type: 3}
     - target: {fileID: 898340900403273997, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -14055,6 +14059,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4536769525759498862, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 54557c40e494e534798a645b462ca94b, type: 3}
     - target: {fileID: 5253708713424463019, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -14063,10 +14071,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SkipWaveBreak
       objectReference: {fileID: 0}
+    - target: {fileID: 7900178640029653494, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 18a151fdbb7a3d242bf9f88273a31e86, type: 3}
     - target: {fileID: 8073136133098692998, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8611905554377791835, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 73b772af8b9802a409f54dd13c3ef8f0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22497,7 +22513,7 @@ SpriteRenderer:
   m_SortingLayerID: -2049372095
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 83f94ab3441e11149953df18edd48ab3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fe81be72274a9094ba9fc78f44e7d966, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
