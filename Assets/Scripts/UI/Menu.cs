@@ -6,15 +6,15 @@ using TMPro;
 public class Menu : MonoBehaviour
 {
     [Header("References")]
-    //[SerializeField] private Animator animator;
+    [SerializeField] private Animator animator;
     [SerializeField] public bool menuOpened = true;
     [SerializeField] private TextMeshProUGUI goldDisplayText;
 
-    //public void OnMenuOpenCloseClick()
-   // {
-       // menuOpened = !menuOpened;
-       // animator.SetBool("Menu", menuOpened);
-  //  }
+    public void OnMenuOpenCloseClick()
+    {
+        menuOpened = !menuOpened;
+        animator.SetBool("Menu", menuOpened);
+    }
 
     public void OnTurretMenuClick(int turretNumber)
     {
