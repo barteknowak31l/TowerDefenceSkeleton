@@ -28,4 +28,11 @@ public class NormalShootingTurret : BaseShootingTurret
     {
         base.Update();   
     }
+
+    protected override void HandleUpgradeEvent(BaseTurret turret)
+    {
+        base.HandleUpgradeEvent(turret);    
+    }
+
+
 }

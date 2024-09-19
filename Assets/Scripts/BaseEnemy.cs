@@ -130,15 +130,20 @@ public abstract class BaseEnemy : MonoBehaviour
 
 	public virtual void DealDamage(DamageInfo damageInfo)
     {
-        Debug.Log(damageInfo.damageSource);
-
-        switch(damageInfo.damageType)
+        try
         {
-            case DamageType.normal: DealNormalDamage(damageInfo); break;
-            case DamageType.fire: DealFireDamage(damageInfo); break;
-            case DamageType.ice: DealIceDamage(damageInfo); break;
-            default: Debug.Log(string.Format("Unrecognized Damage Type: {}",damageInfo.damageType.ToString())); break;
+
+            switch (damageInfo.damageType)
+            {
+                case DamageType.normal: DealNormalDamage(damageInfo); break;
+                case DamageType.fire: DealFireDamage(damageInfo); break;
+                case DamageType.ice: DealIceDamage(damageInfo); break;
+                default: Debug.Log(string.Format("Unrecognized Damage Type: {}",damageInfo.damageType.ToString())); break;
+            }
+
         }
+        catch { }
+
 
         if (currentHp <= 0)
         {
