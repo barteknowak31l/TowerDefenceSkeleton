@@ -11,12 +11,12 @@ public class ExplosiveBullet : BaseBullet
     {
         Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(transform.position, explosionRadius, enemyLayer);
 
+        DamageInfo newDamageInfo = new DamageInfo(damageInfo.damageType, DamageSource.bulletShatter, damageInfo.amount);
+
         foreach (var hitEnemy in hitEnemys)
         {
-			DamageInfo newDamageInfo = new DamageInfo(damageInfo.damageType, DamageSource.bulletShatter, damageInfo.amount);
-			BaseEnemy newEnemy = hitEnemy.GetComponent<BaseEnemy>();
-			BaseEnemy baseEnemy = hitEnemy.GetComponent<BaseEnemy>();
-			if (baseEnemy != null)
+            BaseEnemy baseEnemy = hitEnemy.gameObject.GetComponent<BaseEnemy>();
+            if (baseEnemy != null)
 			{
 				baseEnemy.DealDamage(newDamageInfo);
 			}
