@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.2785826, y: 2.5991418, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1559645077
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.51748276, g: 0, b: 1, a: 1}
@@ -99,12 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c659914465f6168438abb204648e4475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 50
+  bulletSpeed: 4
   target: {fileID: 0}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  spriteRenderer: {fileID: 1995477292870852164}
+  spriteRenderer: {fileID: 1995477292870852164, guid: ecd4a4bd774ea114fab3df9b91f69d14, type: 3}
   rigid: {fileID: 7294001383743652737}
 --- !u!50 &7294001383743652737
 Rigidbody2D:

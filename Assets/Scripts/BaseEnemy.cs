@@ -10,7 +10,7 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField] protected float maxHp = 10;
     [SerializeField] protected float currentHp;
     [SerializeField] protected float movementSpeed = 1;
-    protected float baseMovementSpeed = 1;
+    [SerializeField] protected float baseMovementSpeed = 1;
     [SerializeField] protected int goldDropped = 50;
 
     [Header("Effects")]
@@ -45,6 +45,8 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField] protected Vector2 movementDirection;
     [SerializeField] protected bool isOnLastStage = false;
     [SerializeField] protected Transform nextPathStage;
+    [SerializeField] protected int spawnerNumber;
+
 
 
     protected virtual void Start()
@@ -52,12 +54,14 @@ public abstract class BaseEnemy : MonoBehaviour
         baseMovementSpeed=movementSpeed;
         rigid = GetComponent<Rigidbody2D>();
         Setup();
-        findNextDestinationPoint();
+        //findNextDestinationPoint();
     }
 
     protected virtual void Setup()
     {
         currentHp = maxHp;
+        movementSpeed = baseMovementSpeed;
+        WaveSpawner.Instance.enemiesAlive++;
     }
 
     protected virtual void Update()
@@ -121,10 +125,10 @@ public abstract class BaseEnemy : MonoBehaviour
     }
 
 
-    // TODO separate methods to take fire/electric/ice damage ??? - some part of this mechanic (more related to bullets) might be
-    // implemented in BaseBullet.OnEnemyContact() or its derivatives
+	/* TODO separate methods to take fire/electric/ice damage ??? - some part of this mechanic (more related to bullets) might be
+     implemented in BaseBullet.OnEnemyContact() or its derivatives */
 
-    public virtual void DealDamage(DamageInfo damageInfo)
+	public virtual void DealDamage(DamageInfo damageInfo)
     {
         Debug.Log(damageInfo.damageSource);
 
@@ -340,7 +344,7 @@ public abstract class BaseEnemy : MonoBehaviour
         //igniteStacks = 0;
     }
 
-    protected void findNextDestinationPoint()
+    public void findNextDestinationPoint()
     {
         // find current and next points from GameManager
         // calculate direction vector between them
@@ -350,8 +354,8 @@ public abstract class BaseEnemy : MonoBehaviour
 
         if (currentPathStage == -1)
         {
-            currentPoint = GameManager.Instance.enemySpawnPoint;
-            nextPathStage = GameManager.Instance.enemyPathPoints[0];
+            currentPoint = GameManager.Instance.GetSpawnerPathPoint(spawnerNumber, 0);
+            nextPathStage = GameManager.Instance.GetSpawnerPathPoint(spawnerNumber, currentPathStage + 1);
 
         }
         else
@@ -359,7 +363,7 @@ public abstract class BaseEnemy : MonoBehaviour
             currentPoint = nextPathStage;
             if (!isOnLastStage)
             {
-                nextPathStage = GameManager.Instance.enemyPathPoints[currentPathStage + 1];
+                nextPathStage = GameManager.Instance.GetSpawnerPathPoint(spawnerNumber, currentPathStage + 1);
 
             }
         }
@@ -375,5 +379,20 @@ public abstract class BaseEnemy : MonoBehaviour
     protected void Move()
     {
         rigid.velocity = movementDirection * movementSpeed;
+    }
+
+    public void SetSpawnerNumber(int number)
+    {
+        spawnerNumber = number;
+    }
+
+
+    //TEMPORARY - delete after Piotr base hp system
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Base")
+        {
+            DestroyEnemy();
+        }
     }
 }

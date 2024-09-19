@@ -41,6 +41,11 @@ public abstract class BaseBoss : BaseEnemy
 
     }
 
+    public override void DealDamage(DamageInfo damageInfo)
+    {
+        base.DealDamage(damageInfo);
+    }
+
     protected virtual void PassiveEffect()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, passiveEffectRange, (Vector2)transform.position, 0f, turretsMask);
