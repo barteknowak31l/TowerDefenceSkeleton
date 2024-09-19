@@ -5,7 +5,7 @@ using UnityEngine;
 public class NormalShootingTurret : BaseShootingTurret
 {
 
-    protected override void Shoot()
+	protected override void Shoot()
     {
         base.Shoot();
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);

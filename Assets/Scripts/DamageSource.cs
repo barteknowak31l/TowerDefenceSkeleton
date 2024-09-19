@@ -4,4 +4,5 @@ public enum DamageSource
     cannonTurret,
     sniperTurret,
     auraTurret,
+    bulletShatter
 }

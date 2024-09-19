@@ -17,7 +17,7 @@ public abstract class BaseBullet : MonoBehaviour
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected Rigidbody2D rigid;
 
-    private bool hasEnemyBeenHit = false;
+	public BaseEnemy enemyToIgnore;
 
     public virtual void Start()
     {
@@ -49,12 +49,10 @@ public abstract class BaseBullet : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!hasEnemyBeenHit)
-        {
             BaseEnemy enemy = collision.gameObject.GetComponent<BaseEnemy>();
+        if (enemy == null) return;
             OnEnemyContact(enemy, damageInfo);
-            hasEnemyBeenHit = true;
 
         }
-    }
+
 }
