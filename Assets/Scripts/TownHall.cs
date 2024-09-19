@@ -1,0 +1,78 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TownHall : MonoBehaviour
+{
+    [Header("Town Hall Stats")]
+    [SerializeField] private int maxHp = 10;
+    [SerializeField] private int currentHp;
+    [SerializeField] private int normalEnemyDamage =1;
+    [SerializeField] private int bossDamage =3;
+
+    [SerializeField] private GameObject gameOverMenu;
+
+    void Start()
+    {
+        currentHp = maxHp;
+     //   gameOverMenu.SetActive(false);
+    }
+
+  
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        IceBoss iceBoss = collision.gameObject.GetComponent<IceBoss>();
+        ElectricBoss electricBoss = collision.gameObject.GetComponent<ElectricBoss>();
+
+        if (iceBoss != null)
+        {
+
+            TakeDamage(bossDamage);
+
+            Destroy(iceBoss.gameObject);
+            return;
+
+        }
+
+        if (electricBoss != null)
+        {
+            TakeDamage(bossDamage);
+
+            Destroy(electricBoss.gameObject);
+            return;
+
+
+        }
+
+        BaseEnemy baseEnemy = collision.gameObject.GetComponent<BaseEnemy>();
+        if (baseEnemy != null)
+        {
+            TakeDamage(normalEnemyDamage);
+
+            Destroy(baseEnemy.gameObject);
+
+
+
+        }
+   
+
+    }
+
+    private void TakeDamage(int damage)
+    {
+        currentHp -= damage;
+
+        if (currentHp <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        Time.timeScale = 0;
+
+     //   gameOverMenu.SetActive(true);
+
+    }
+}
