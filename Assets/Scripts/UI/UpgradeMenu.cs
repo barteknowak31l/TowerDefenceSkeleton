@@ -7,14 +7,14 @@ public class UpgradeMenu : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private BaseTurret turret;
-    [SerializeField] private Button electricButton;
+    //[SerializeField] private Button electricButton;
     [SerializeField] private Button fireButton;
     [SerializeField] private Button iceButton;
     [SerializeField] private Button upgradeButton;
 
     private void OnEnable()
     {
-        electricButton.interactable = false;
+        //electricButton.interactable = false;
         fireButton.interactable = false;
         iceButton.interactable = false;
         CheckIfDmgTypeButtonsShouldBeEnabled();
@@ -39,7 +39,7 @@ public class UpgradeMenu : MonoBehaviour
     {
         if (turret.GetUpgrades() != null && turret.GetTurretLevel() >= GameManager.Instance.damageTypeSelectionLevel  && turret.GetDamageInfo().damageType == DamageType.normal)
         {
-            electricButton.interactable = true;
+            //electricButton.interactable = true;
             fireButton.interactable = true;
             iceButton.interactable = true;
         }
@@ -50,7 +50,7 @@ public class UpgradeMenu : MonoBehaviour
         if(turret.GetDamageInfo().damageType == DamageType.normal)
         {
             turret.SetDamageType((DamageType)type);
-            electricButton.interactable = false;
+            //electricButton.interactable = false;
             fireButton.interactable = false;
             iceButton.interactable = false;
         }

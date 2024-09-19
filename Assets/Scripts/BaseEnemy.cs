@@ -331,4 +331,14 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         spawnerNumber = number;
     }
+
+
+    //TEMPORARY - delete after Piotr base hp system
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Base")
+        {
+            DestroyEnemy();
+        }
+    }
 }
