@@ -27,12 +27,12 @@ public abstract class BaseEnemy : MonoBehaviour
      protected float recentlyFrozenDuration = 3.0f;
     protected float recentlyFrozenTimer = 0f;
      protected bool isIgnited = false;
-    [SerializeField] protected int igniteStacks = 0;
+     protected int igniteStacks = 0;
     [SerializeField] protected int maxIgniteStacks = 10;
     [SerializeField] protected float igniteDamage = 2f;
     [SerializeField] protected float igniteInterval = 1f;
     [SerializeField]  protected float igniteResetTime = 3.0f;
-    [SerializeField] protected float timeSinceLastFireDamage = 0f;
+    protected float timeSinceLastFireDamage = 0f;
 
     [Header("Resistance")]
     [SerializeField] protected float fireResistance = 0.0f; 
