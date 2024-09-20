@@ -13651,6 +13651,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3719948324695173084, guid: 199b32ffece175a4dae751a5bb900ba5, type: 3}
+      propertyPath: scalUper
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719948324695173084, guid: 199b32ffece175a4dae751a5bb900ba5, type: 3}
       propertyPath: baseRange
       value: 3
       objectReference: {fileID: 0}
