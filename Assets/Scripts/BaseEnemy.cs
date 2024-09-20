@@ -116,7 +116,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
 		}
     }
-    protected virtual void DestroyEnemy(bool dropGold = false)
+    public virtual void DestroyEnemy(bool dropGold = false)
     {
         Debug.Log("enemy zniszczony");
         if (dropGold)
@@ -392,15 +392,5 @@ public abstract class BaseEnemy : MonoBehaviour
     public void SetSpawnerNumber(int number)
     {
         spawnerNumber = number;
-    }
-
-
-    //TEMPORARY - delete after Piotr base hp system
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Base")
-        {
-            DestroyEnemy();
-        }
     }
 }
