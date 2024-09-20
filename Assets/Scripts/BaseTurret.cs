@@ -37,10 +37,6 @@ public abstract class BaseTurret : MonoBehaviour
     [SerializeField] protected float gracePeriod;
     [SerializeField] protected float gracePeriodTimer;
 
-
-
-
-
     [Header("References")]
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected TurretUpgrades upgrades;
@@ -50,8 +46,12 @@ public abstract class BaseTurret : MonoBehaviour
     private bool upgradesMenuOpen = false;
     private static BaseTurret currentlyOpenMenu = null;
     private bool menuPositionChanged = false;
-  
-    
+
+    [Header("Upgrade Sprites")]
+    [SerializeField] private Sprite level3Sprite;
+    [SerializeField] private Sprite level5Sprite;
+    [SerializeField] private Transform turretSprite;
+
     protected virtual void Start()
     {
   
@@ -77,7 +77,9 @@ public abstract class BaseTurret : MonoBehaviour
 
     protected virtual void Update()
     {
-        if(bossPassiveRetentionTimer > -1f)
+        Debug.Log(upgrades.turretLevel + " turret level");
+
+        if (bossPassiveRetentionTimer > -1f)
             bossPassiveRetentionTimer -= Time.deltaTime;
 
 
@@ -159,7 +161,29 @@ public abstract class BaseTurret : MonoBehaviour
     }
 
     // Implement this to have different upgrade results per turret type
-    protected abstract void HandleUpgradeEvent(BaseTurret turret);
+    protected virtual void HandleUpgradeEvent(BaseTurret turret)
+    {
+
+        Debug.Log(upgrades.turretLevel + " turret level");
+        if (turret != this) return;
+
+        SpriteRenderer turretSpriteRenderer = turretSprite.GetComponent<SpriteRenderer>();
+
+   
+
+      
+        if (upgrades.turretLevel == 2)
+        {
+            turretSpriteRenderer.sprite = level3Sprite;
+        }
+        else if (upgrades.turretLevel == 5)
+        {
+            turretSpriteRenderer.sprite = level5Sprite;
+        }
+    
+
+
+    }
 
 
     // Damage Type must be set to deal proper damage type by turret
