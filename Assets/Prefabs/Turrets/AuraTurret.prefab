@@ -278,8 +278,8 @@ MonoBehaviour:
   fireCooldown: 1
   damageType: 0
   damageSource: 3
-  cost: 100
-  upgradesConfigFile: TurretUpgradeData/NormalTurretUpgrades
+  cost: 800
+  upgradesConfigFile: TurretUpgradeData/AuraTurretUpgrades
   bossPassiveRetentionTime: 0
   iceBossPassiveIsUp: 0
   iceBossSlowPenaltyMultiplier: 0

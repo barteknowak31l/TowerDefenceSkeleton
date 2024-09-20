@@ -42,9 +42,5 @@ public class BaseAuraTurret : BaseTurret
 			}
 		}
 	}
-	protected override void CalculateFireCooldown()
-	{
-	}
-
 
 }

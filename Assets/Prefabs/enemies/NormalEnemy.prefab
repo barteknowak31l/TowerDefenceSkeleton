@@ -165,7 +165,7 @@ MonoBehaviour:
   currentHp: 0
   movementSpeed: 0.3
   baseMovementSpeed: 0.3
-  goldDropped: 50
+  goldDropped: 10
   freezeDuration: 2
   shatterChance: 0.2
   freezeStacks: 0
