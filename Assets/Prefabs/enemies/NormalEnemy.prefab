@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 69744249
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e669c5c686e8bb94b97a6a41f9301a3e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d976c318b7ca30f42b5d6f3bc7b17d11, type: 3}
   m_Color: {r: 1, g: 0.70636004, b: 0.3622641, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -161,10 +161,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1711030b175d54cb87fe759aa63bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
+  maxHp: 3
   currentHp: 0
-  movementSpeed: 1
-  baseMovementSpeed: 1
+  movementSpeed: 0.3
+  baseMovementSpeed: 0.3
   goldDropped: 50
   freezeDuration: 2
   shatterChance: 0.2
@@ -176,8 +176,8 @@ MonoBehaviour:
   igniteDamage: 2
   igniteInterval: 1
   igniteResetTime: 3
-  fireResistance: 0
-  iceResistance: 0
+  fireResistance: 0.2
+  iceResistance: 0.2
   rigid: {fileID: 2760776928304613662}
   currentPathStage: -1
   movementDirection: {x: 0, y: 0}

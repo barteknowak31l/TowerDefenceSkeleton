@@ -38,9 +38,7 @@ public class TownHall : MonoBehaviour
         {
             TakeDamage(normalEnemyDamage);
 
-            Destroy(baseEnemy.gameObject);
-
-
+            baseEnemy.DestroyEnemy();
 
         }
 

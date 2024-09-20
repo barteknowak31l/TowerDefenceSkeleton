@@ -77,7 +77,6 @@ public abstract class BaseTurret : MonoBehaviour
 
     protected virtual void Update()
     {
-        Debug.Log(upgrades.turretLevel + " turret level");
 
         if (bossPassiveRetentionTimer > -1f)
             bossPassiveRetentionTimer -= Time.deltaTime;

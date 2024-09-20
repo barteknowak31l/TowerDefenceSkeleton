@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalEnemy : BaseEnemy
+public class FastEnemy : BaseEnemy
 {
-
     // Start is called before the first frame update
     protected override void Start()
     {
