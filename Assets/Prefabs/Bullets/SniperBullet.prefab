@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08fe0f7286f4064f88fb1b5b63ec86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 50
+  bulletSpeed: 20
   target: {fileID: 0}
   enemyMask:
     serializedVersion: 2
