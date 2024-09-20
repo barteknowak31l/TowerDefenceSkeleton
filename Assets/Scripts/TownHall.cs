@@ -40,8 +40,6 @@ public class TownHall : MonoBehaviour
 
             Destroy(baseEnemy.gameObject);
 
-
-
         }
 
 

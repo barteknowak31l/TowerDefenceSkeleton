@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.98, y: 1.56, z: 0.19598557}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,10 +73,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 69744249
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: e11f1efcea47f0d4aadd8ecf7c0fcfbd, type: 3}
   m_Color: {r: 1, g: 0.3351353, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -148,7 +148,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.5114016
 --- !u!114 &8553179206047197949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,11 +166,24 @@ MonoBehaviour:
   movementSpeed: 1
   baseMovementSpeed: 1
   goldDropped: 50
+  freezeDuration: 2
+  shatterChance: 0.2
+  freezeStacks: 0
+  maxFreezeStacks: 5
+  freezeSlowPercentage: 0.2
+  freezeResetTime: 3
+  maxIgniteStacks: 10
+  igniteDamage: 2
+  igniteInterval: 1
+  igniteResetTime: 3
+  fireResistance: 0
+  iceResistance: 0
   rigid: {fileID: 6051316408086821654}
   currentPathStage: -1
   movementDirection: {x: 0, y: 0}
   isOnLastStage: 0
   nextPathStage: {fileID: 0}
+  spawnerNumber: 0
   passiveEffectRange: 0
   passiveEffectCooldown: 0
   turretsMask:
