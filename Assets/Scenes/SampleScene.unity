@@ -2564,6 +2564,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6945790152531691992, guid: f0c0b0a8cf255f145befea4da3dd6f72, type: 3}
   m_PrefabInstance: {fileID: 189028569}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &195370556 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3950774177622583134, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+  m_PrefabInstance: {fileID: 1173922751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &195705154
 GameObject:
   m_ObjectHideFlags: 0
@@ -14198,6 +14209,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4316065546273073012, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4536769525759498862, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -18756,6 +18771,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6945790152531691992, guid: f0c0b0a8cf255f145befea4da3dd6f72, type: 3}
   m_PrefabInstance: {fileID: 1564756371}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1570963644 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4316065546273073012, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+  m_PrefabInstance: {fileID: 1173922751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1572476030
 GameObject:
   m_ObjectHideFlags: 0
@@ -21842,6 +21862,8 @@ MonoBehaviour:
     - {fileID: 1435338494}
     - {fileID: 145599007}
   upgradeMenu: {fileID: 874443839}
+  uiWinScreen: {fileID: 1570963644}
+  hpText: {fileID: 195370556}
 --- !u!4 &1810095045
 Transform:
   m_ObjectHideFlags: 0
