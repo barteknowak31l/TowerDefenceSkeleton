@@ -9,6 +9,13 @@ public class AuraTurret : BaseAuraTurret
         base.OnEnable();
         upgrades.UpgradeSuccess += HandleUpgradeEvent;
     }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        upgrades.UpgradeSuccess -= HandleUpgradeEvent;
+    }
+
     protected override void Start()
 	{
 		base.Start();

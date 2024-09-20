@@ -80,10 +80,22 @@ public abstract class BaseTurret : MonoBehaviour
     {
         upgrades = gameObject.AddComponent<TurretUpgrades>();
 		rangeObject.SetActive(false);
-
+        GameManager.Instance.UpgradeOpen += DisableRangeObject;
 
 
 	}
+
+    protected virtual void OnDisable()
+    {
+        GameManager.Instance.UpgradeOpen -= DisableRangeObject;
+
+    }
+
+    private void DisableRangeObject(BaseTurret turret)
+    {
+        if(turret != this)
+            rangeObject.SetActive(false);
+    }
 
 
     protected virtual void Update()
@@ -120,7 +132,6 @@ public abstract class BaseTurret : MonoBehaviour
 
         GameManager.Instance.UpgradeMenu(this);
         rangeObject.transform.localScale = new Vector3(range * scalUper, range * scalUper, 1);
-		//bool jestAktywny = rangeObject.activeSelf;
 	}
     private IEnumerator removeStun()
     {
