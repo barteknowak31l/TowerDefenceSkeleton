@@ -161,11 +161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5cef573a89d944985adec3c1e2d89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
+  maxHp: 3
   currentHp: 0
   movementSpeed: 1
   baseMovementSpeed: 1
-  goldDropped: 50
+  goldDropped: 15
   freezeDuration: 2
   shatterChance: 0.2
   freezeStacks: 0
@@ -176,8 +176,8 @@ MonoBehaviour:
   igniteDamage: 2
   igniteInterval: 1
   igniteResetTime: 3
-  fireResistance: 0
-  iceResistance: 0
+  fireResistance: 0.2
+  iceResistance: 0.2
   rigid: {fileID: 0}
   currentPathStage: -1
   movementDirection: {x: 0, y: 0}

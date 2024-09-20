@@ -196,7 +196,7 @@ MonoBehaviour:
   damageType: 0
   damageSource: 1
   cost: 100
-  upgradesConfigFile: TurretUpgradeData/NormalTurretUpgrades
+  upgradesConfigFile: TurretUpgradeData/CannonTurretUpgrades
   bossPassiveRetentionTime: 0
   iceBossPassiveIsUp: 0
   iceBossSlowPenaltyMultiplier: 0

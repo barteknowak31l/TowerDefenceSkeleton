@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 10
   currentHp: 0
-  movementSpeed: 0.3
+  movementSpeed: 0.17
   baseMovementSpeed: 1
   goldDropped: 50
   freezeDuration: 2

@@ -280,7 +280,7 @@ MonoBehaviour:
   damageType: 0
   damageSource: 2
   cost: 100
-  upgradesConfigFile: TurretUpgradeData/NormalTurretUpgrades
+  upgradesConfigFile: TurretUpgradeData/SniperTurretUpgrades
   bossPassiveRetentionTime: 0
   iceBossPassiveIsUp: 0
   iceBossSlowPenaltyMultiplier: 0
