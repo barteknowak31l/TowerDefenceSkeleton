@@ -66,6 +66,8 @@ public abstract class BaseShootingTurret : BaseTurret
     // Upgrade methods below can be further overrided to have different outcomes per turret type
     protected override void HandleUpgradeEvent(BaseTurret turret)
     {
+        base.HandleUpgradeEvent(turret);
+
         if (turret != this) return;
 
             CalculateFireCooldown();
