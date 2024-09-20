@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     public GameObject upgradeMenu;
     private BaseTurret currentlySelectedTurret;
 
+    [Header("UI References")]
+    [SerializeField] public GameObject uiWinScreen;
+
 
     public delegate void UpgradeMenuOpenEvent(BaseTurret turret);
     public event UpgradeMenuOpenEvent UpgradeOpen;
@@ -96,6 +99,12 @@ public class GameManager : MonoBehaviour
     public void SetHpText(string hp)
     {
         hpText.text = hp;
+    }
+
+    public void ShowWinScreen()
+    {
+        StopGame();
+        uiWinScreen.SetActive(true);
     }
 
 }
