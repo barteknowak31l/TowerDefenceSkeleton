@@ -33,6 +33,13 @@ public abstract class BaseShootingTurret : BaseTurret
         upgrades.UpgradeSuccess += HandleUpgradeEvent;
     }
 
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        upgrades.UpgradeSuccess -= HandleUpgradeEvent;
+    }
+
     protected override void Update()
     {
         base.Update();

@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     private BaseTurret currentlySelectedTurret;
 
 
+    public delegate void UpgradeMenuOpenEvent(BaseTurret turret);
+    public event UpgradeMenuOpenEvent UpgradeOpen;
+
     public TextMeshProUGUI hpText;
 
     private void Awake()
@@ -73,6 +76,8 @@ public class GameManager : MonoBehaviour
     public void OpenUpgradeMenu(BaseTurret turret)
     {
         upgradeMenu.SetActive(true);
+
+        UpgradeOpen(turret);
 
         UpgradeMenu menu = upgradeMenu.GetComponent<UpgradeMenu>();
         menu.SetTurret(turret);
