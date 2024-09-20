@@ -8,11 +8,17 @@ public class BaseAuraTurret : BaseTurret
 	[Header("Layers")]
 	[SerializeField] private LayerMask enemyLayer;
 
-	protected override void HandleUpgradeEvent(BaseTurret turret)
-	{
-		if (turret != this) return; ;
-	}
-	protected override void Start()
+    protected override void HandleUpgradeEvent(BaseTurret turret)
+    {
+        base.HandleUpgradeEvent(turret);
+
+        if (turret != this) return;
+
+        CalculateFireCooldown();
+        CalculateDamage();
+        CalculateRange();
+    }
+    protected override void Start()
 	{
 		base.Start();
 		StartCoroutine(UpdateEnemiesInRange());
@@ -42,5 +48,4 @@ public class BaseAuraTurret : BaseTurret
 			}
 		}
 	}
-
 }

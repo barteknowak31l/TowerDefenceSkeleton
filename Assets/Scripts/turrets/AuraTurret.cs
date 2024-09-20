@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class AuraTurret : BaseAuraTurret
 {
-	protected override void Start()
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        upgrades.UpgradeSuccess += HandleUpgradeEvent;
+    }
+    protected override void Start()
 	{
 		base.Start();
 	}
@@ -12,4 +17,10 @@ public class AuraTurret : BaseAuraTurret
 	{
 		base.Update();
 	}
+
+    protected override void HandleUpgradeEvent(BaseTurret turret)
+    {
+        base.HandleUpgradeEvent(turret);
+
+    }
 }

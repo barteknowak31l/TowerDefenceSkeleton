@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GridCell : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class GridCell : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         if (turret == null)
         {
             spriteRenderer.color = hoverColor;
@@ -51,6 +53,8 @@ public class GridCell : MonoBehaviour
 
     private void OnMouseDown()
     {
+
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         if (turretObj != null) return;
 
         GameObject turretToSpawn = BuildManager.Instance.GetSelectedTower();

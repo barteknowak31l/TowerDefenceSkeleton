@@ -11113,6 +11113,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6945790152531691992, guid: f0c0b0a8cf255f145befea4da3dd6f72, type: 3}
   m_PrefabInstance: {fileID: 872917930}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &874443839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3203704438436131157, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+  m_PrefabInstance: {fileID: 1173922751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &883956731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21773,6 +21778,7 @@ MonoBehaviour:
     - {fileID: 793787488}
     - {fileID: 1435338494}
     - {fileID: 145599007}
+  upgradeMenu: {fileID: 874443839}
 --- !u!4 &1810095045
 Transform:
   m_ObjectHideFlags: 0

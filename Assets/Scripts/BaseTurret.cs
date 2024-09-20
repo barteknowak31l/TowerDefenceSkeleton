@@ -105,7 +105,11 @@ public abstract class BaseTurret : MonoBehaviour
         }
 
     }
+    private void OnMouseDown()
+    {
 
+        GameManager.Instance.UpgradeMenu(this);
+    }
     private IEnumerator removeStun()
     {
         yield return new WaitForSeconds(stunDuration);
@@ -162,8 +166,8 @@ public abstract class BaseTurret : MonoBehaviour
     // Implement this to have different upgrade results per turret type
     protected virtual void HandleUpgradeEvent(BaseTurret turret)
     {
+        Debug.Log("test upgrade");
 
-        Debug.Log(upgrades.turretLevel + " turret level");
         if (turret != this) return;
 
         SpriteRenderer turretSpriteRenderer = turretSprite.GetComponent<SpriteRenderer>();
@@ -173,6 +177,7 @@ public abstract class BaseTurret : MonoBehaviour
       
         if (upgrades.turretLevel == 2)
         {
+
             turretSpriteRenderer.sprite = level3Sprite;
         }
         else if (upgrades.turretLevel == 5)

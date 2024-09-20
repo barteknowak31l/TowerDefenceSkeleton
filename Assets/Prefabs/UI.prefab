@@ -195,7 +195,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4655925588572795611}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8789534471930497522}
+        m_TargetAssemblyTypeName: UpgradeMenu, Assembly-CSharp
+        m_MethodName: SelectDamageType
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &5860418466009243088
 Animator:
   serializedVersion: 5
@@ -1700,6 +1712,7 @@ GameObject:
   - component: {fileID: 1725172380770684752}
   - component: {fileID: 6237495973085221716}
   - component: {fileID: 3214213410919360669}
+  - component: {fileID: 8789534471930497522}
   m_Layer: 5
   m_Name: UpgradePanel
   m_TagString: Untagged
@@ -1726,12 +1739,12 @@ RectTransform:
   - {fileID: 4125356841499293361}
   - {fileID: 723533117722884600}
   - {fileID: 1525954014006462880}
-  m_Father: {fileID: 898340900403273997}
+  m_Father: {fileID: 6092463891673042519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -533.4, y: -426.1}
-  m_SizeDelta: {x: -1753.4437, y: -887.1411}
+  m_AnchoredPosition: {x: 265.59998, y: -425.90768}
+  m_SizeDelta: {x: -164.14465, y: -894.155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6237495973085221716
 CanvasRenderer:
@@ -1771,6 +1784,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8789534471930497522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3203704438436131157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2682eb2bc38c1244cb68a7b500466d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButton: {fileID: 9130005208413814421}
+  fireButton: {fileID: 5801014650954216967}
+  iceButton: {fileID: 7551548290110435128}
 --- !u!1 &3248341099532296465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,7 +1963,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1725172380770684752}
   - {fileID: 6092463891673042519}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2562,7 +2589,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7330255437471321053}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8789534471930497522}
+        m_TargetAssemblyTypeName: UpgradeMenu, Assembly-CSharp
+        m_MethodName: SelectDamageType
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &2447115344034199617
 Animator:
   serializedVersion: 5
@@ -2991,7 +3030,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3697123262753767837}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8789534471930497522}
+        m_TargetAssemblyTypeName: UpgradeMenu, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &5759212881921347069
 Animator:
   serializedVersion: 5
@@ -5100,6 +5151,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1725172380770684752}
   - {fileID: 5941018565599131865}
   - {fileID: 3181091129430548616}
   - {fileID: 6656692328548470424}
