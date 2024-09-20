@@ -293,7 +293,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4970361592607226332}
   upgrades: {fileID: 0}
   upgradesMenu: {fileID: 5066242826788986625}
-  upgradesMenuRectTransform: {fileID: 0}
+  level3Sprite: {fileID: 21300000, guid: 429223c1260403f47bd3c4c694a0dbcd, type: 3}
+  level5Sprite: {fileID: 21300000, guid: 013a6c47022d9a147a473273b0db229e, type: 3}
+  turretSprite: {fileID: 355419304537387852}
   rotationSpeed: 200
   rotationPoint: {fileID: 1389588656270255927}
   firingPoint: {fileID: 4172771561899587691}
