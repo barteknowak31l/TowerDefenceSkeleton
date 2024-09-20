@@ -77,11 +77,11 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f5977d3f0f4f881489fd6d42a3dfa61a, type: 3}
-  m_Color: {r: 0.51748276, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 0.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -151,7 +151,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.8, y: 0.8}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.8, y: 0.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -178,4 +178,7 @@ MonoBehaviour:
     m_Bits: 64
   spriteRenderer: {fileID: 1995477292870852164}
   rigid: {fileID: 7294001383743652737}
+  fireColor: {r: 1, g: 0, b: 0, a: 1}
+  iceColor: {r: 0, g: 0, b: 1, a: 1}
+  normalColor: {r: 1, g: 1, b: 0, a: 1}
   enemyToIgnore: {fileID: 0}

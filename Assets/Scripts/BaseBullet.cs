@@ -17,11 +17,32 @@ public abstract class BaseBullet : MonoBehaviour
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected Rigidbody2D rigid;
 
+    [Header("Colors")]
+    [SerializeField] protected Color fireColor;
+    [SerializeField] protected Color iceColor;
+    [SerializeField] protected Color normalColor;
+
+
 	public BaseEnemy enemyToIgnore;
 
     public virtual void Start()
     {
         Destroy(gameObject,5f);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        setColor();
+
+    }
+
+    private void setColor()
+    {
+        switch (damageInfo.damageType)
+        {
+            case DamageType.fire: spriteRenderer.color = fireColor; break;
+            case DamageType.ice: spriteRenderer.color = iceColor; break;
+            case DamageType.normal: spriteRenderer.color = normalColor; break;
+        }
     }
 
     protected virtual void FixedUpdate()
