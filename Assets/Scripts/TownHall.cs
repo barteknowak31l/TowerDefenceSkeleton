@@ -53,6 +53,9 @@ public class TownHall : MonoBehaviour
         {
             GameOver();
         }
+
+        GameManager.Instance.SetHpText(currentHp.ToString());
+
     }
 
     private void GameOver()
