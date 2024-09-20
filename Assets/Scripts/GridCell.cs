@@ -53,6 +53,7 @@ public class GridCell : MonoBehaviour
 
     private void OnMouseDown()
     {
+
         if (EventSystem.current.IsPointerOverGameObject()) return;
         if (turretObj != null) return;
 

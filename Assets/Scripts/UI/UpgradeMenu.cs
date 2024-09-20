@@ -1,45 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradeMenu : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private BaseTurret turret;
-    //[SerializeField] private Button electricButton;
+    private BaseTurret selectedTurret; 
+
+    [SerializeField] private Button upgradeButton;
     [SerializeField] private Button fireButton;
     [SerializeField] private Button iceButton;
-    [SerializeField] private Button upgradeButton;
 
     private void OnEnable()
     {
-        //electricButton.interactable = false;
         fireButton.interactable = false;
         iceButton.interactable = false;
+        if (selectedTurret != null)
+        {
+            CheckIfDmgTypeButtonsShouldBeEnabled();
+        }
+    }
+
+    public void SetTurret(BaseTurret turret)
+    {
+        selectedTurret = turret;
         CheckIfDmgTypeButtonsShouldBeEnabled();
     }
 
     public void BuyUpgrade()
     {
-        turret.UpgradeTurret();
+        Debug.Log("test kupowanie");
+        if (selectedTurret == null || selectedTurret.GetTurretLevel() == 5) return;
+
+        selectedTurret.UpgradeTurret();
         CheckIfDmgTypeButtonsShouldBeEnabled();
-        if(CheckIfMaxLvl())
-        {
-            upgradeButton.interactable = false;
-        }
+
+
+      
     }
 
     private bool CheckIfMaxLvl()
     {
-        return turret.GetTurretLevel() >= GameManager.Instance.maxUpgradeLvl;
+        return selectedTurret.GetTurretLevel() >= GameManager.Instance.maxUpgradeLvl;
     }
 
     private void CheckIfDmgTypeButtonsShouldBeEnabled()
     {
-        if (turret.GetUpgrades() != null && turret.GetTurretLevel() >= GameManager.Instance.damageTypeSelectionLevel  && turret.GetDamageInfo().damageType == DamageType.normal)
+        if (selectedTurret != null && selectedTurret.GetUpgrades() != null &&
+            selectedTurret.GetTurretLevel() >= GameManager.Instance.damageTypeSelectionLevel &&
+            selectedTurret.GetDamageInfo().damageType == DamageType.normal)
         {
-            //electricButton.interactable = true;
             fireButton.interactable = true;
             iceButton.interactable = true;
         }
@@ -47,13 +55,11 @@ public class UpgradeMenu : MonoBehaviour
 
     public void SelectDamageType(int type)
     {
-        if(turret.GetDamageInfo().damageType == DamageType.normal)
+        if (selectedTurret != null && selectedTurret.GetDamageInfo().damageType == DamageType.normal)
         {
-            turret.SetDamageType((DamageType)type);
-            //electricButton.interactable = false;
+            selectedTurret.SetDamageType((DamageType)type);
             fireButton.interactable = false;
             iceButton.interactable = false;
         }
     }
-
 }

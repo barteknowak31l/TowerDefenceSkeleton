@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Spawners")]
     [SerializeField] public List<SpawnerData> spawners;
+    public GameObject upgradeMenu;
+    private BaseTurret currentlySelectedTurret;
 
     private void Awake()
     {
@@ -54,6 +56,33 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0;
 
     }
-        
+    public void UpgradeMenu(BaseTurret turret)
+    {
+        if (currentlySelectedTurret == turret)
+        {
+            CloseUpgradeMenu();
+        }
+        else
+        {
+            OpenUpgradeMenu(turret);
+        }
+    }
+
+    public void OpenUpgradeMenu(BaseTurret turret)
+    {
+        upgradeMenu.SetActive(true);
+
+        UpgradeMenu menu = upgradeMenu.GetComponent<UpgradeMenu>();
+        menu.SetTurret(turret);
+
+
+        currentlySelectedTurret = turret; 
+    }
+
+    public void CloseUpgradeMenu()
+    {
+        upgradeMenu.SetActive(false);
+        currentlySelectedTurret = null; 
+    }
 
 }
