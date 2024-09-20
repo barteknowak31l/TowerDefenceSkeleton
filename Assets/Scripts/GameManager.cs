@@ -48,6 +48,12 @@ public class GameManager : MonoBehaviour
     {
         return spawners[spawner].transforms[pathPoint];
     }
+
+    public void StopGame()
+    {
+                Time.timeScale = 0;
+
+    }
         
 
 }

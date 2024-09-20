@@ -32,7 +32,7 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField] protected float igniteDamage = 2f;
     [SerializeField] protected float igniteInterval = 1f;
     [SerializeField]  protected float igniteResetTime = 3.0f;
-     protected float timeSinceLastFireDamage = 0f;
+    protected float timeSinceLastFireDamage = 0f;
 
     [Header("Resistance")]
     [SerializeField] protected float fireResistance = 0.0f; 
@@ -49,7 +49,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
 
 
-    protected virtual void Start()
+	protected virtual void Start()
     {
         baseMovementSpeed=movementSpeed;
         rigid = GetComponent<Rigidbody2D>();
@@ -109,12 +109,16 @@ public abstract class BaseEnemy : MonoBehaviour
             {
                 DestroyEnemy();
             }
+			Vector2 normalizedDirection = distanceToNextStage.normalized;
+			float angle = Mathf.Atan2(normalizedDirection.y, normalizedDirection.x) * Mathf.Rad2Deg;
+			transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90f));
+			Move();
 
-            Move();
-        }
+		}
     }
     protected virtual void DestroyEnemy(bool dropGold = false)
     {
+        Debug.Log("enemy zniszczony");
         if (dropGold)
         {
             GameManager.Instance.AddGold(goldDropped);
@@ -129,16 +133,20 @@ public abstract class BaseEnemy : MonoBehaviour
 
 	public virtual void DealDamage(DamageInfo damageInfo)
     {
-        Debug.Log(damageInfo.damageSource);
-
-        switch(damageInfo.damageType)
+        try
         {
-            case DamageType.normal: DealNormalDamage(damageInfo); break;
-            case DamageType.fire: DealFireDamage(damageInfo); break;
-            case DamageType.ice: DealIceDamage(damageInfo); break;
-            case DamageType.electric: DealElectricDamage(damageInfo); break;
-            default: Debug.Log(string.Format("Unrecognized Damage Type: {}",damageInfo.damageType.ToString())); break;
+
+            switch (damageInfo.damageType)
+            {
+                case DamageType.normal: DealNormalDamage(damageInfo); break;
+                case DamageType.fire: DealFireDamage(damageInfo); break;
+                case DamageType.ice: DealIceDamage(damageInfo); break;
+                default: Debug.Log(string.Format("Unrecognized Damage Type: {}",damageInfo.damageType.ToString())); break;
+            }
+
         }
+        catch { }
+
 
         if (currentHp <= 0)
         {
@@ -155,22 +163,40 @@ public abstract class BaseEnemy : MonoBehaviour
 
     protected virtual void DealIceDamage(DamageInfo damageInfo)
     {
-        timeSinceLastFreezeDamage = 0;
-        float damageAfterResistance = damageInfo.amount * (1.0f - iceResistance);
-        ShatterChance(shatterChance);
-        currentHp -= damageAfterResistance;
-    
-        AddFreezeStack();
+  
 
         switch (damageInfo.damageSource)
         {
-            case DamageSource.singleTurret:             ; break;
-            case DamageSource.sniperTurret:             ; break;
-            case DamageSource.cannonTurret:             ; break;
-            case DamageSource.auraTurret:               ; break;
+            case DamageSource.singleTurret:
+                ShatterChance(shatterChance);
+                DealStandardIceDamage(damageInfo);  
+                break;
+            case DamageSource.sniperTurret:
+                DealStandardIceDamage(damageInfo) ;
+                break;
+            case DamageSource.bulletShatter:
+            DealStandardIceDamage(damageInfo) ;
+            break;
+            case DamageSource.cannonTurret:
+                DealStandardIceDamage(damageInfo) ; 
+                break;
+            case DamageSource.auraTurret:
+                AddFreezeStack();
+                break;
             default: Debug.Log(string.Format("Unrecognized Damage Source: {}", damageInfo.damageSource.ToString())); break;
         }
     }
+
+    protected virtual void DealStandardIceDamage(DamageInfo damageInfo)
+    {
+        timeSinceLastFreezeDamage = 0;
+        float damageAfterResistance = damageInfo.amount * (1.0f - iceResistance);
+        currentHp -= damageAfterResistance;
+
+        AddFreezeStack();
+    }
+
+ 
 
     protected virtual void DealFireDamage(DamageInfo damageInfo)
     {
@@ -178,29 +204,38 @@ public abstract class BaseEnemy : MonoBehaviour
 
         currentHp -= damageAfterResistance;
 
-        AddIgniteStack();
-
         switch (damageInfo.damageSource)
         {
-            case DamageSource.singleTurret:; break;
-            case DamageSource.sniperTurret:; break;
-            case DamageSource.cannonTurret:; break;
-            case DamageSource.auraTurret:; break;
+            case DamageSource.singleTurret:
+                DealFireDamageSingleTurret(damageInfo);
+                break;
+            case DamageSource.sniperTurret:
+                AddMultipleIgniteStacks(4) ; 
+                break;
+             case DamageSource.bulletShatter:
+             AddIgniteStack();
+             break;
+            case DamageSource.cannonTurret:
+                AddIgniteStack() ; 
+                break;
+            case DamageSource.auraTurret:
+                AddIgniteStack();
+                break;
             default: Debug.Log(string.Format("Unrecognized Damage Source: {}", damageInfo.damageSource.ToString())); break;
         }
     }
-
-    protected virtual void DealElectricDamage(DamageInfo damageInfo)
+    protected virtual void DealFireDamageSingleTurret(DamageInfo damageInfo)
     {
-        switch (damageInfo.damageSource)
+
+
+        AddIgniteStack();
+        if (igniteStacks >= 2)
         {
-            case DamageSource.singleTurret:; break;
-            case DamageSource.sniperTurret:; break;
-            case DamageSource.cannonTurret:; break;
-            case DamageSource.auraTurret:; break;
-            default: Debug.Log(string.Format("Unrecognized Damage Source: {}", damageInfo.damageSource.ToString())); break;
+            DealImmediateIgniteDamage();
         }
     }
+
+
     protected void ShatterChance(float shatterChance)
     {
         if (UnityEngine.Random.value < shatterChance && isFrozen)
@@ -245,7 +280,21 @@ public abstract class BaseEnemy : MonoBehaviour
         movementSpeed = 0;
 
     }
+    protected void AddMultipleIgniteStacks(int stackCount)
+    {
+        for (int i = 0; i < stackCount; i++)
+        {
+            if (igniteStacks < maxIgniteStacks)
+            {
+                timeSinceLastFireDamage = 0;
 
+                igniteStacks++;
+               
+            }
+        }
+        DealImmediateIgniteDamage();
+
+    }
     protected void AddIgniteStack()
     {
         if (igniteStacks < maxIgniteStacks)
@@ -260,12 +309,27 @@ public abstract class BaseEnemy : MonoBehaviour
         }
     }
 
+
+    protected void DealImmediateIgniteDamage()
+    {
+        float totalDamage = igniteDamage * igniteStacks *  igniteResetTime*(1.0f - fireResistance);
+        currentHp -= totalDamage;
+
+        if (currentHp <= 0)
+        {
+            DestroyEnemy(true);
+        }
+        igniteStacks = 0;
+        isIgnited = false;
+    }
     protected IEnumerator IgniteDamageOverTime()
     {
         isIgnited = true;
 
         while (igniteStacks > 0)
         {
+            yield return new WaitForSeconds(igniteInterval);
+
             float damageAfterResistance = igniteDamage * igniteStacks * (1.0f - fireResistance);
             currentHp -= damageAfterResistance;
             if (currentHp <= 0)
@@ -274,20 +338,18 @@ public abstract class BaseEnemy : MonoBehaviour
                 yield break;
             }
 
-            yield return new WaitForSeconds(igniteInterval);
 
             timeSinceLastFireDamage += igniteInterval;
 
             if (timeSinceLastFireDamage >= igniteResetTime)
             {
-            
-                igniteStacks = 0;
-                break;
+                timeSinceLastFireDamage = 0;
+                    igniteStacks -=1;
             }
         }
 
         isIgnited = false;
-        igniteStacks = 0;
+        //igniteStacks = 0;
     }
 
     public void findNextDestinationPoint()
