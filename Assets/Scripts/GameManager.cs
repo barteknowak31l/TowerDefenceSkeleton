@@ -28,10 +28,8 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         Instance = this;
-
     }
-
-    public bool SpendGold(int amount)
+	public bool SpendGold(int amount)
     {
         if(amount <= gold)
         {
@@ -74,15 +72,15 @@ public class GameManager : MonoBehaviour
 
         UpgradeMenu menu = upgradeMenu.GetComponent<UpgradeMenu>();
         menu.SetTurret(turret);
-
-
-        currentlySelectedTurret = turret; 
-    }
+		currentlySelectedTurret = turret;
+		currentlySelectedTurret.rangeObject.SetActive(true);
+	}
 
     public void CloseUpgradeMenu()
     {
         upgradeMenu.SetActive(false);
-        currentlySelectedTurret = null; 
+        currentlySelectedTurret.rangeObject.SetActive(false);
+		currentlySelectedTurret = null; 
     }
 
 }

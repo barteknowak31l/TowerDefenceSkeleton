@@ -52,6 +52,10 @@ public abstract class BaseTurret : MonoBehaviour
     [SerializeField] private Sprite level5Sprite;
     [SerializeField] private Transform turretSprite;
 
+    [Header("RangeShow")]
+    [SerializeField] public GameObject rangeObject;
+    [SerializeField] protected float scalUper;
+
     protected virtual void Start()
     {
   
@@ -64,15 +68,22 @@ public abstract class BaseTurret : MonoBehaviour
         bossPassiveRetentionTimer = bossPassiveRetentionTime;
         isStunned = false;
         gracePeriodTimer = gracePeriod;
+		rangeObject.SetActive(false);
+        scalUper = 5;
 
-    }
+
+	}
 
 
 
     protected virtual void OnEnable()
     {
         upgrades = gameObject.AddComponent<TurretUpgrades>();
-    }
+		rangeObject.SetActive(false);
+
+
+
+	}
 
 
     protected virtual void Update()
@@ -103,13 +114,14 @@ public abstract class BaseTurret : MonoBehaviour
             StartCoroutine(removeStun());
 
         }
-
-    }
+	}
     private void OnMouseDown()
     {
 
         GameManager.Instance.UpgradeMenu(this);
-    }
+        rangeObject.transform.localScale = new Vector3(range * scalUper, range * scalUper, 1);
+		//bool jestAktywny = rangeObject.activeSelf;
+	}
     private IEnumerator removeStun()
     {
         yield return new WaitForSeconds(stunDuration);
@@ -122,7 +134,7 @@ public abstract class BaseTurret : MonoBehaviour
         CalculateFireCooldown();
         CalculateDamage();
         CalculateRange();
-    }
+	}
 
     protected virtual void CalculateFireCooldown()
     {
@@ -213,68 +225,6 @@ public abstract class BaseTurret : MonoBehaviour
     {
         return upgrades;
     }
-
-/*    private void OnMouseDown()
-    {
-        if (currentlyOpenMenu != null && currentlyOpenMenu != this)
-        {
-            currentlyOpenMenu.CloseUpgradesMenu();
-        }
-
-        upgradesMenuOpen = !upgradesMenuOpen;
-
-        if (upgradesMenuOpen)
-        {
-            ShowUpgradesMenu();
-            currentlyOpenMenu = this;
-        }
-        else
-        {
-            CloseUpgradesMenu();
-        }
-    }*/
-
-
-    /*    private void ShowUpgradesMenu()
-        {
-            upgradesMenu.SetActive(true);
-
-            if (menuPositionChanged == false)
-            {
-                Vector3 currentPosition = upgradesMenuRectTransform.position;
-
-                if (upgradesMenuRectTransform.position.x > 0 && upgradesMenuRectTransform.position.y > 0)
-                {
-                    currentPosition.x -= 2.2f;
-                    currentPosition.y -= 2.2f;
-                }
-                else if (upgradesMenuRectTransform.position.x < 0 && upgradesMenuRectTransform.position.y > 0)
-                {
-                    currentPosition.y -= 2.2f;
-                }
-                else if (upgradesMenuRectTransform.position.x > 0 && upgradesMenuRectTransform.position.y < 0)
-                {
-                    currentPosition.x -= 2.2f;
-                }
-
-                upgradesMenuRectTransform.position = currentPosition;
-                menuPositionChanged = true;
-
-            }
-
-
-        }*/
-
-    /*    private void CloseUpgradesMenu()
-        {
-            upgradesMenu.SetActive(false);
-            upgradesMenuOpen = false;
-
-            if (currentlyOpenMenu == this)
-            {
-                currentlyOpenMenu = null;
-            }
-        }*/
 
     public int GetTurretLevel()
     {
