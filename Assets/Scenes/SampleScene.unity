@@ -2185,9 +2185,9 @@ MonoBehaviour:
   enemiesAlive: 0
   breakDuration: 5
   currentBreakTime: 0
-  boss1Wave: 0
-  boss2Wave: 1
-  boss3Wave: 2
+  boss1Wave: 10
+  boss2Wave: 20
+  boss3Wave: 30
   skipButton: {fileID: 1350316589}
 --- !u!114 &160597457
 MonoBehaviour:
@@ -2233,6 +2233,10 @@ MonoBehaviour:
   - {fileID: 893529704297557507, guid: e08cd7794dc647549b15b303264fc7b0, type: 3}
   - {fileID: 4544353220991861443, guid: 9d0e88f33c506fd46ae223e04dc62ae0, type: 3}
   - {fileID: 2109559406355028268, guid: 776a08f5162e3af41887d3182ae82e08, type: 3}
+  - {fileID: 6596257821509789946, guid: 033b7ffe98c47a3468f47172ce45df8a, type: 3}
+  - {fileID: 6062989537497323249, guid: 00dd6fcd4c333624d84933f87f9f1b18, type: 3}
+  - {fileID: 3924611374092087372, guid: fc895df13ef75ff45b1596dca5194e34, type: 3}
+  - {fileID: 3890053041234578965, guid: c114301d43389964eae852e95a942ada, type: 3}
 --- !u!1001 &164154661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13629,6 +13633,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3719948324695173084, guid: 199b32ffece175a4dae751a5bb900ba5, type: 3}
+      propertyPath: range
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719948324695173084, guid: 199b32ffece175a4dae751a5bb900ba5, type: 3}
+      propertyPath: baseRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719948324695173084, guid: 199b32ffece175a4dae751a5bb900ba5, type: 3}
       propertyPath: fireCooldown
       value: 1
       objectReference: {fileID: 0}
@@ -13694,7 +13706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5747669215713771348, guid: 199b32ffece175a4dae751a5bb900ba5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21576,7 +21588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b9a2315e2c97941a067e1d7543e820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 10000000
+  gold: 400
   damageTypeSelectionLevel: 2
   maxUpgradeLvl: 5
   enemySpawnPoint: {fileID: 1387324176}

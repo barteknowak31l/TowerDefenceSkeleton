@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 10
   currentHp: 0
-  movementSpeed: 1
+  movementSpeed: 0.17
   baseMovementSpeed: 1
   goldDropped: 50
   freezeDuration: 2
@@ -176,8 +176,8 @@ MonoBehaviour:
   igniteDamage: 2
   igniteInterval: 1
   igniteResetTime: 3
-  fireResistance: 0
-  iceResistance: 0
+  fireResistance: 0.35
+  iceResistance: 0.35
   rigid: {fileID: 0}
   currentPathStage: -1
   movementDirection: {x: 0, y: 0}

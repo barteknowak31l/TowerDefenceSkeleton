@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c659914465f6168438abb204648e4475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 4
+  bulletSpeed: 10
   target: {fileID: 0}
   enemyMask:
     serializedVersion: 2
