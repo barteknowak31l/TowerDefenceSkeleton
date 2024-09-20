@@ -47,12 +47,17 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField] protected Transform nextPathStage;
     [SerializeField] protected int spawnerNumber;
 
+    [Header("HpBar")]
+    [SerializeField] protected EnemyHpBar hpBar;
+
 
 
 	protected virtual void Start()
     {
         baseMovementSpeed=movementSpeed;
         rigid = GetComponent<Rigidbody2D>();
+        hpBar = GetComponentInChildren<EnemyHpBar>();
+
         Setup();
         //findNextDestinationPoint();
     }
@@ -62,6 +67,10 @@ public abstract class BaseEnemy : MonoBehaviour
         currentHp = maxHp;
         movementSpeed = baseMovementSpeed;
         WaveSpawner.Instance.enemiesAlive++;
+
+        hpBar.hp.maxValue = maxHp;
+        hpBar.hp.minValue = 0;
+        hpBar.hp.value = currentHp;
     }
 
     protected virtual void Update()
@@ -147,6 +156,7 @@ public abstract class BaseEnemy : MonoBehaviour
         }
         catch { }
 
+        hpBar.hp.value = currentHp;
 
         if (currentHp <= 0)
         {

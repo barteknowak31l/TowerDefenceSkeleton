@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] public List<SpawnerData> spawners;
     public GameObject upgradeMenu;
     private BaseTurret currentlySelectedTurret;
+
+
+    public TextMeshProUGUI hpText;
 
     private void Awake()
     {
@@ -83,6 +87,12 @@ public class GameManager : MonoBehaviour
     {
         upgradeMenu.SetActive(false);
         currentlySelectedTurret = null; 
+    }
+
+
+    public void SetHpText(string hp)
+    {
+        hpText.text = hp;
     }
 
 }
