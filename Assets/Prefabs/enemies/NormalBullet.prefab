@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 777aee037b3ef6544b6cc501feb3d4b6, type: 3}
-  m_Color: {r: 0.51748276, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -106,6 +106,9 @@ MonoBehaviour:
     m_Bits: 64
   spriteRenderer: {fileID: 1995477292870852164, guid: ecd4a4bd774ea114fab3df9b91f69d14, type: 3}
   rigid: {fileID: 7294001383743652737}
+  fireColor: {r: 1, g: 0, b: 0, a: 1}
+  iceColor: {r: 0, g: 0, b: 1, a: 1}
+  normalColor: {r: 1, g: 1, b: 0, a: 1}
   enemyToIgnore: {fileID: 0}
 --- !u!50 &7294001383743652737
 Rigidbody2D:
