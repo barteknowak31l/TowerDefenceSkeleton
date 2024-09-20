@@ -62,7 +62,7 @@ public class TownHall : MonoBehaviour
         GameManager.Instance.StopGame();
 
 
-     //   gameOverMenu.SetActive(true);
+        gameOverMenu.SetActive(true);
 
     }
 }

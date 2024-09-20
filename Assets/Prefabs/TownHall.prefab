@@ -49,7 +49,7 @@ MonoBehaviour:
   currentHp: 0
   normalEnemyDamage: 1
   bossDamage: 3
-  gameOverMenu: {fileID: 0}
+  gameOverMenu: {fileID: 4086265531693632735, guid: c597a28ed914f4c46b0cadbdabc6f171, type: 3}
 --- !u!61 &5613195116524388836
 BoxCollider2D:
   m_ObjectHideFlags: 0
