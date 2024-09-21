@@ -161,20 +161,21 @@ public class UpgradeMenu : MonoBehaviour
         switch (selectedTurret.GetDamageInfo().damageSource)
         {
             case DamageSource.singleTurret:
-                    descriptionFire += " Fire - single turret";
-                    descriptionIce += " Ice - single turret";
+                    descriptionFire += "Applies ignite stacks that deals dmg over time, deals instant dmg at 2 stacks and removes all stacks";
+                    descriptionIce += "Applies chill stacks that slows enemy. After 5 stacks enemy is freezed - " +
+                    " freezed enemies have a slight chance to shatter";
                 break;
             case DamageSource.cannonTurret:
-                    descriptionFire += " Fire - cannon turret";
-                    descriptionIce += " Ice - cannon turret";
+                    descriptionFire += "Applies AOE ignite stacks that deals dmg over time";
+                descriptionIce += "Applies AOE chill stacks that slows enemy.";
                 break;
             case DamageSource.auraTurret:
-                    descriptionFire += " Fire - aura turret";
-                    descriptionIce += " Ice - aura turret";
+                    descriptionFire += "Applies AOE ignite stacks that deals dmg over time";
+                descriptionIce += "Applies AOE chill stacks that slows enemy.";
                 break;
             case DamageSource.sniperTurret:
-                    descriptionFire += " Fire - sniper turret";
-                    descriptionIce += " Ice  - sniper turret";
+                descriptionFire += "Applies ignite stacks that deals dmg over time, deals instant dmg at 4 stacks and removes all stacks, shattered bullets applies only 1 stack";
+                descriptionIce += "Applies chill stacks that slows enemy. Applies to shattered bullets too";
                 break;
         }
 

@@ -195,7 +195,7 @@ public abstract class BaseEnemy : MonoBehaviour
                 DealStandardIceDamage(damageInfo) ; 
                 break;
             case DamageSource.auraTurret:
-                AddFreezeStack();
+                DealStandardIceDamage(damageInfo);
                 break;
             default: Debug.Log(string.Format("Unrecognized Damage Source: {}", damageInfo.damageSource.ToString())); break;
         }

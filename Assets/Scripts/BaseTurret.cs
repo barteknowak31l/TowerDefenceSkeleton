@@ -74,18 +74,32 @@ public abstract class BaseTurret : MonoBehaviour
 
         cost = upgrades.cost;
 
+
+        if(isTownHallTurret)
+        {
+            upgrades = gameObject.AddComponent<TurretUpgrades>();
+            GameManager.Instance.UpgradeOpen += DisableRangeObject;
+        }
+
+
 	}
 
 
 
     protected virtual void OnEnable()
     {
-        upgrades = gameObject.AddComponent<TurretUpgrades>();
-		rangeObject.SetActive(false);
-        GameManager.Instance.UpgradeOpen += DisableRangeObject;
+        if(!isTownHallTurret)
+        {
+            upgrades = gameObject.AddComponent<TurretUpgrades>();
+            rangeObject.SetActive(false);
+            GameManager.Instance.UpgradeOpen += DisableRangeObject;
+        }
+        else
+        {
+            rangeObject.SetActive(false);
 
-
-	}
+        }
+    }
 
     protected virtual void OnDisable()
     {
@@ -159,7 +173,12 @@ public abstract class BaseTurret : MonoBehaviour
 
     protected virtual void CalculateFireCooldown()
     {
-        baseFireCooldown = upgrades.GetUpgradeByType(UpgradeTypes.attackSpeed).value;
+
+        if (!isTownHallTurret)
+        {
+            baseFireCooldown = upgrades.GetUpgradeByType(UpgradeTypes.attackSpeed).value;
+        }
+
         fireCooldown = baseFireCooldown;
         if (iceBossPassiveIsUp)
         {
