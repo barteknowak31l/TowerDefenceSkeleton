@@ -1,13 +1,5 @@
 {
-    "waves": [{
-            "enemies": [{
-                    "amount": 8,
-                    "enemyType": "NormalEnemy"
-                }
-            ],
-            "name": "Wave 1",
-            "spawners": [0, 1]
-        },
+    "waves": [
         {
             "enemies": [{
                     "amount": 14,

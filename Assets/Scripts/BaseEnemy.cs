@@ -29,7 +29,7 @@ public abstract class BaseEnemy : MonoBehaviour
      protected bool isIgnited = false;
      protected int igniteStacks = 0;
     [SerializeField] protected int maxIgniteStacks = 10;
-    [SerializeField] protected float igniteDamage = 2f;
+    [SerializeField] protected float igniteDamage = 0.5f;
     [SerializeField] protected float igniteInterval = 1f;
     [SerializeField]  protected float igniteResetTime = 3.0f;
     protected float timeSinceLastFireDamage = 0f;
@@ -123,7 +123,11 @@ public abstract class BaseEnemy : MonoBehaviour
 			transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90f));
 			Move();
 
-		}
+
+            hpBar.iceStackImage.gameObject.SetActive(freezeStacks > 0);
+            hpBar.fireStackImage.gameObject.SetActive(igniteStacks > 0);
+
+        }
     }
     public virtual void DestroyEnemy(bool dropGold = false)
     {
@@ -307,11 +311,16 @@ public abstract class BaseEnemy : MonoBehaviour
     }
     protected void AddIgniteStack()
     {
+
+        Debug.Log("ignited");
+
+
         if (igniteStacks < maxIgniteStacks)
         {
             timeSinceLastFireDamage = 0;
 
             igniteStacks++;
+
             if (!isIgnited)
             {
                 igniteCoroutine = StartCoroutine(IgniteDamageOverTime());
@@ -359,6 +368,7 @@ public abstract class BaseEnemy : MonoBehaviour
         }
 
         isIgnited = false;
+        hpBar.fireStackImage.enabled = false;
         //igniteStacks = 0;
     }
 

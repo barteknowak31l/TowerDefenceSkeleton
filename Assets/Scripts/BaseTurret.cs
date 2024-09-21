@@ -18,6 +18,7 @@ public abstract class BaseTurret : MonoBehaviour
     [SerializeField] protected DamageSource damageSource;
     [SerializeField] protected int cost = 100;
     [SerializeField] public string upgradesConfigFile;
+    [SerializeField] public bool isTownHallTurret = false;
 
     [Header("Boss Passives")]
     [SerializeField] protected float bossPassiveRetentionTime;
@@ -129,6 +130,7 @@ public abstract class BaseTurret : MonoBehaviour
 	}
     private void OnMouseDown()
     {
+        if (isTownHallTurret) return;
 
         GameManager.Instance.UpgradeMenu(this);
         rangeObject.transform.localScale = new Vector3(range * scalUper, range * scalUper, 1);
