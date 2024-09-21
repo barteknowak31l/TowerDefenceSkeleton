@@ -2,7 +2,7 @@
     "waves": [
         {
             "enemies": [{
-                    "amount": 14,
+                    "amount": 1,
                     "enemyType": "NormalEnemy"
                 }
             ],

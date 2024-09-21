@@ -28,6 +28,10 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] public int boss2Wave;
     [SerializeField] public int boss3Wave;
 
+    [Header("UI")]
+    [SerializeField] public GameObject timerObject;
+    [SerializeField] public TextMeshProUGUI timerText;
+
     private EnemySpawnDispatcher enemySpawnDispatcher;
     public GameObject skipButton;
     public static WaveSpawner Instance { get; private set; }
@@ -63,6 +67,8 @@ public class WaveSpawner : MonoBehaviour
 
         Debug.Log(string.Format("waves count: {0}", waves.waves.Count));
         currentSpawnDelay = spawnDelay;
+
+        StartWaveBreak();
         StartWave();
     }
 
@@ -87,10 +93,7 @@ public class WaveSpawner : MonoBehaviour
             SpawnRandomEnemy();
         }
 
-
-     
-
-    }
+        }
     private void UpdateWaveNameUI()
     {
         if (waveNumber < waves.waves.Count )
@@ -103,6 +106,7 @@ public class WaveSpawner : MonoBehaviour
     public void SkipWaveBreak()
     {
         currentBreakTime = 0;
+        timerObject.SetActive(false);
 
     }
 
@@ -154,18 +158,23 @@ public class WaveSpawner : MonoBehaviour
             Camera.main.transform.GetComponent<CameraZoomer>().ChangeCameraSize(2);
         }
 
+        timerObject.SetActive(true);
+        timerText.text = ((uint)currentBreakTime + 1).ToString();
 
     }
 
     void HandleWaveBreak()
     {
         skipButton.SetActive(true);
+        timerText.text = ((uint)currentBreakTime + 1).ToString();
 
         currentBreakTime -= Time.deltaTime;
 
         if (currentBreakTime <= 0)
         {
             skipButton.SetActive(false);
+            timerObject.SetActive(false);
+
 
             isInBreak = false;
             waveNumber++; 

@@ -7,6 +7,9 @@ public class ExplosiveBullet : BaseBullet
     [Header("Explosive Stats")]
     [SerializeField] private float explosionRadius = 1f;
     [SerializeField] private LayerMask enemyLayer;
+
+    [SerializeField] GameObject explosion;
+
     protected override void OnEnemyContact(BaseEnemy enemy, DamageInfo damageInfo)
     {
         Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(transform.position, explosionRadius, enemyLayer);
@@ -19,6 +22,8 @@ public class ExplosiveBullet : BaseBullet
             if (baseEnemy != null)
 			{
 				baseEnemy.DealDamage(newDamageInfo);
+                GameObject newExpolosion = Instantiate(explosion, baseEnemy.transform.position, Quaternion.identity);
+                Destroy(newExpolosion, 2f);
 			}
         }
         Destroy(gameObject);

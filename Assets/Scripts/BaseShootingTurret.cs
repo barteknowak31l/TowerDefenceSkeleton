@@ -31,7 +31,11 @@ public abstract class BaseShootingTurret : BaseTurret
     protected override void OnEnable()
     {
         base.OnEnable();
-        upgrades.UpgradeSuccess += HandleUpgradeEvent;
+        if (!isTownHallTurret)
+        {
+            upgrades.UpgradeSuccess += HandleUpgradeEvent;
+        }
+
 
     }
 
@@ -39,7 +43,11 @@ public abstract class BaseShootingTurret : BaseTurret
     protected override void OnDisable()
     {
         base.OnDisable();
-        upgrades.UpgradeSuccess -= HandleUpgradeEvent;
+        if (!isTownHallTurret)
+        {
+            upgrades.UpgradeSuccess += HandleUpgradeEvent;
+
+        }
     }
 
     protected override void Update()
