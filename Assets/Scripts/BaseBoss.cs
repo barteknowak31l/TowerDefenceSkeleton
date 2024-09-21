@@ -18,7 +18,6 @@ public abstract class BaseBoss : BaseEnemy
     protected override void Start()
     {
         base.Start();
-        Setup();
     }
 
     protected override void Setup()

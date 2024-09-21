@@ -2186,7 +2186,7 @@ MonoBehaviour:
   enemiesAlive: 0
   breakDuration: 5
   currentBreakTime: 0
-  boss1Wave: 10
+  boss1Wave: 5
   boss2Wave: 20
   boss3Wave: 30
   timerObject: {fileID: 752520318}
@@ -6493,7 +6493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7859428086099062624, guid: d847a66026453344696f18140dcb3e8e, type: 3}
       propertyPath: maxHp
-      value: 999
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7859428086099062624, guid: d847a66026453344696f18140dcb3e8e, type: 3}
       propertyPath: gameOverMenu

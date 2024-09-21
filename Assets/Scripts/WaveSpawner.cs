@@ -34,6 +34,7 @@ public class WaveSpawner : MonoBehaviour
 
     private EnemySpawnDispatcher enemySpawnDispatcher;
     public GameObject skipButton;
+    private bool firstWave = true;
     public static WaveSpawner Instance { get; private set; }
     private void Awake()
     {
@@ -69,7 +70,6 @@ public class WaveSpawner : MonoBehaviour
         currentSpawnDelay = spawnDelay;
 
         StartWaveBreak();
-        StartWave();
     }
 
     void Update()
@@ -177,7 +177,11 @@ public class WaveSpawner : MonoBehaviour
 
 
             isInBreak = false;
-            waveNumber++; 
+            if(firstWave==false)
+            waveNumber++;
+
+            firstWave = false;
+
             StartWave();
         }
     }
