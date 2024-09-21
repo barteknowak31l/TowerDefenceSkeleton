@@ -107,9 +107,9 @@ MonoBehaviour:
     m_Bits: 64
   spriteRenderer: {fileID: 1995477292870852164}
   rigid: {fileID: 7294001383743652737}
-  fireColor: {r: 0, g: 0, b: 0, a: 0}
-  iceColor: {r: 0, g: 0, b: 0, a: 0}
-  normalColor: {r: 0, g: 0, b: 0, a: 0}
+  fireColor: {r: 1, g: 0, b: 0, a: 1}
+  iceColor: {r: 0, g: 0, b: 1, a: 1}
+  normalColor: {r: 1, g: 1, b: 0, a: 1}
   enemyToIgnore: {fileID: 0}
   explosionRadius: 1
   enemyLayer:
