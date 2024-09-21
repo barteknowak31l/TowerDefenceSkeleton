@@ -192,8 +192,6 @@ public abstract class BaseTurret : MonoBehaviour
     {
         baseDamage = upgrades.GetUpgradeByType(UpgradeTypes.damage).value;
         damage = baseDamage;
-
-
     }
 
     protected virtual void CalculateRange()
