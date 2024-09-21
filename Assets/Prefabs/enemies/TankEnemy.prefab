@@ -162,11 +162,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed3a6fa7a4a53c48b86b1a99ec521bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
+  maxHp: 40
   currentHp: 0
   movementSpeed: 0.17
-  baseMovementSpeed: 1
-  goldDropped: 50
+  baseMovementSpeed: 0.17
+  goldDropped: 180
   freezeDuration: 2
   shatterChance: 0.2
   freezeStacks: 0

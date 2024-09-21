@@ -2184,10 +2184,10 @@ MonoBehaviour:
   isSpawning: 0
   waveNameText: {fileID: 188583968}
   enemiesAlive: 0
-  breakDuration: 5
+  breakDuration: 10
   currentBreakTime: 0
-  boss1Wave: 5
-  boss2Wave: 20
+  boss1Wave: 4
+  boss2Wave: 9
   boss3Wave: 30
   timerObject: {fileID: 752520318}
   timerText: {fileID: 752520320}
@@ -14221,6 +14221,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1628807262221002248, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+      propertyPath: m_text
+      value: 1600
+      objectReference: {fileID: 0}
     - target: {fileID: 1700893527119890942, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -14389,6 +14393,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BackToMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 7779005597254163077, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+      propertyPath: m_text
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 7900178640029653494, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -14401,6 +14409,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 73b772af8b9802a409f54dd13c3ef8f0, type: 3}
+    - target: {fileID: 8617069957504790410, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+      propertyPath: m_text
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 8890097100646025974, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
       propertyPath: m_Sprite
       value: 

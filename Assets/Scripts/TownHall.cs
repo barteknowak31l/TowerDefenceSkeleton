@@ -27,7 +27,7 @@ public class TownHall : MonoBehaviour
 
             TakeDamage(bossDamage);
 
-            Destroy(baseBoss.gameObject);
+            baseBoss.DestroyEnemy();
             return;
 
         }

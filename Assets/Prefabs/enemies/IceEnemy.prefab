@@ -162,11 +162,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ccecd07ec73769468b575e343abe6b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
+  maxHp: 20
   currentHp: 0
-  movementSpeed: 1
-  baseMovementSpeed: 1
-  goldDropped: 50
+  movementSpeed: 0.4
+  baseMovementSpeed: 0.4
+  goldDropped: 300
   freezeDuration: 2
   shatterChance: 0.2
   freezeStacks: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   igniteInterval: 1
   igniteResetTime: 3
   fireResistance: 0
-  iceResistance: 0
+  iceResistance: 0.5
   rigid: {fileID: 0}
   currentPathStage: -1
   movementDirection: {x: 0, y: 0}
@@ -194,6 +194,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 323724956052258226}
     m_Modifications:
+    - target: {fileID: 111337871701688033, guid: a9fa4cbf95cd6f24cb7829ab74e49366, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6880915554965885838, guid: a9fa4cbf95cd6f24cb7829ab74e49366, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
