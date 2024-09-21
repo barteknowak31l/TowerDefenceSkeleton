@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     }
     public void UpgradeMenu(BaseTurret turret)
     {
+        upgradeMenu.SetActive(false);
+
         if (currentlySelectedTurret == turret)
         {
             CloseUpgradeMenu();

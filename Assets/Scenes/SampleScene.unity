@@ -2182,6 +2182,7 @@ MonoBehaviour:
   spawnDelay: 1
   currentSpawnDelay: 1
   isSpawning: 0
+  waveNameText: {fileID: 1173922752}
   enemiesAlive: 0
   breakDuration: 5
   currentBreakTime: 0
@@ -14266,6 +14267,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+--- !u!114 &1173922752 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1094225331770073178, guid: 36bccfc3ae43813459a71d7c37ba99d9, type: 3}
+  m_PrefabInstance: {fileID: 1173922751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1182526930
 PrefabInstance:
   m_ObjectHideFlags: 0

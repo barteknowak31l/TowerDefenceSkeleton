@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -11,7 +14,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private WaveList waves;
     [SerializeField] private WaveListElement currentWave;
     [SerializeField] private bool isSpawning = false;
-
+    [SerializeField] private TMP_Text waveNameText;
     [SerializeField] public int enemiesAlive = 0;
 
     [Header("Wave Breaks")]
@@ -88,9 +91,16 @@ public class WaveSpawner : MonoBehaviour
      
 
     }
+    private void UpdateWaveNameUI()
+    {
+        if (waveNumber < waves.waves.Count )
+        {
+            string waveName = waves.waves[waveNumber].name;
+            waveNameText.text = waveName;
+        }
+    }
 
-
-   public void SkipWaveBreak()
+    public void SkipWaveBreak()
     {
         currentBreakTime = 0;
 
@@ -98,6 +108,8 @@ public class WaveSpawner : MonoBehaviour
 
     void StartWave()
     {
+        UpdateWaveNameUI();
+
         if (waveNumber < waves.waves.Count)
         {
             currentSpawnDelay = spawnDelay;
