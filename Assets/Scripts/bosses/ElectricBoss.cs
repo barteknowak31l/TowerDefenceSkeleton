@@ -15,4 +15,9 @@ public class ElectricBoss : BaseBoss
     {
         base.Update();
     }
+
+    public override void DestroyEnemy(bool dropGold = false)
+    {
+        base.DestroyEnemy(dropGold);
+    }
 }

@@ -51,6 +51,9 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField] protected EnemyHpBar hpBar;
 
 
+    private bool isDestroyed = false;
+
+
 
 	protected virtual void Start()
     {
@@ -131,6 +134,11 @@ public abstract class BaseEnemy : MonoBehaviour
     }
     public virtual void DestroyEnemy(bool dropGold = false)
     {
+        if(isDestroyed) return;
+
+        isDestroyed = true; 
+
+
         Debug.Log("enemy zniszczony");
         if (dropGold)
         {
