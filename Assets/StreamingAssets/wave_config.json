@@ -1,117 +1,182 @@
 {
     "waves": [
         {
-            "enemies": [{
-                    "amount": 1,
+            "enemies": [
+                {
+                    "amount": 6,
+                    "enemyType": "NormalEnemy"
+                }
+            ],
+            "name": "Wave 1",
+            "spawners": [ 0, 1 ]
+        },
+        {
+            "enemies": [
+                {
+                    "amount": 10,
                     "enemyType": "NormalEnemy"
                 }
             ],
             "name": "Wave 2",
-            "spawners": [0, 1]
+            "spawners": [ 0, 1 ]
         },
         {
-            "enemies": [{
+            "enemies": [
+                {
+                    "amount": 8,
+                    "enemyType": "NormalEnemy"
+                },
+                {
                     "amount": 1,
-                    "enemyType": "ElectricBoss"
+                    "enemyType": "TankEnemy"
                 }
             ],
             "name": "Wave 3",
-            "spawners": [0, 1]
+            "spawners": [ 0, 1 ]
         },
         {
-            "enemies": [{
-                    "amount": 12,
+            "enemies": [
+                {
+                    "amount": 8,
+                    "enemyType": "NormalEnemy"
+                },
+                {
+                    "amount": 2,
                     "enemyType": "TankEnemy"
                 }
             ],
             "name": "Wave 4",
-            "spawners": [0, 1]
+            "spawners": [ 0, 1 ]
         },
         {
-            "enemies": [{
-                    "amount": 12,
-                    "enemyType": "FastEnemy"
-                }
-            ],
-            "name": "Wave 5",
-            "spawners": [0, 1]
-        },
-        {
-            "enemies": [{
-                    "amount": 10,
-                    "enemyType": "NormalEnemy"
-                }, {
-                    "amount": 10,
-                    "enemyType": "FastEnemy"
-                }
-            ],
-            "name": "Wave 6",
-            "spawners": [0, 1]
-        },
-        {
-            "enemies": [{
-                    "amount": 10,
-                    "enemyType": "NormalEnemy"
-                }, {
-                    "amount": 10,
-                    "enemyType": "TankEnemy"
-                }, {
-                    "amount": 10,
-                    "enemyType": "FastEnemy"
-                }
-            ],
-            "name": "Wave 7",
-            "spawners": [0, 1]
-        },
-        {
-            "enemies": [{
-                    "amount": 20,
-                    "enemyType": "TankEnemy"
-                }
-            ],
-            "name": "Wave 8",
-            "spawners": [0, 1]
-        },
-        {
-            "enemies": [{
-                    "amount": 10,
-                    "enemyType": "NormalEnemy"
-                }, {
-                    "amount": 10,
-                    "enemyType": "TankEnemy"
-                }, {
-                    "amount": 10,
-                    "enemyType": "FastEnemy"
-                }
-            ],
-            "name": "Wave 9",
-            "spawners": [0, 1]
-        },
-        {
-            "enemies": [{
+            "enemies": [
+                {
                     "amount": 1,
                     "enemyType": "ElectricBoss"
                 }
             ],
             "name": "BOSS WAVE",
-            "spawners": [0]
+            "spawners": [ 0 ]
         },
         {
-            "enemies": [{
+            "enemies": [
+                {
+                    "amount": 10,
+                    "enemyType": "FireEnemy"
+                },
+                {
+                    "amount": 4,
+                    "enemyType": "FastEnemy"
+                }
+            ],
+            "name": "Wave 6",
+            "spawners": [ 2, 3, 4, 5 ]
+        },
+        {
+            "enemies": [
+                {
+                    "amount": 10,
+                    "enemyType": "FireEnemy"
+                },
+                {
                     "amount": 5,
-                    "enemyType": "NormalEnemy"
+                    "enemyType": "TankEnemy"
+                },
+                {
+                    "amount": 20,
+                    "enemyType": "FastEnemy"
+                }
+            ],
+            "name": "Wave 7",
+            "spawners": [ 2, 3, 4, 5 ]
+        },
+        {
+            "enemies": [
+                {
+                    "amount": 15,
+                    "enemyType": "TankEnemy"
+                }
+            ],
+            "name": "Wave 8",
+            "spawners": [ 2, 3, 4, 5 ]
+        },
+        {
+            "enemies": [
+                {
+                    "amount": 15,
+                    "enemyType": "FireEnemy"
+                },
+                {
+                    "amount": 10,
+                    "enemyType": "TankEnemy"
+                },
+                {
+                    "amount": 15,
+                    "enemyType": "FastEnemy"
+                }
+            ],
+            "name": "Wave 9",
+            "spawners": [ 2, 3, 4, 5 ]
+        },
+        {
+            "enemies": [
+                {
+                    "amount": 1,
+                    "enemyType": "FireBoss"
+                }
+            ],
+            "name": "BOSS WAVE",
+            "spawners": [ 2 ]
+        },
+        {
+            "enemies": [
+                {
+                    "amount": 5,
+                    "enemyType": "IceEnemy"
                 }
             ],
             "name": "Wave 11",
-            "spawners": [2, 3, 4, 5, 6]
-        }, {
-            "enemies": [{
+            "spawners": [ 7, 8, 9, 10, 11, 12, 13, 14 ]
+        },
+        {
+            "enemies": [
+                {
                     "amount": 5,
-                    "enemyType": "NormalEnemy"
+                    "enemyType": "IceEnemy"
                 }
             ],
-            "name": "Wave 21",
-            "spawners": [7, 8, 9, 10, 11, 12, 13, 14]
+            "name": "Wave 12",
+            "spawners": [ 7, 8, 9, 10, 11, 12, 13, 14 ]
+        },
+        {
+            "enemies": [
+                {
+                    "amount": 10,
+                    "enemyType": "IceEnemy"
+                }
+            ],
+            "name": "Wave 13",
+            "spawners": [ 7, 8, 9, 10, 11, 12, 13, 14 ]
+        },
+        {
+            "enemies": [
+                {
+                    "amount": 15,
+                    "enemyType": "IceEnemy"
+                }
+            ],
+            "name": "Wave 14",
+            "spawners": [ 7, 8, 9, 10, 11, 12, 13, 14 ]
+        },
+        {
+            "enemies": [
+                {
+                    "amount": 1,
+                    "enemyType": "IceBoss"
+                }
+            ],
+            "name": "BOSS WAVE",
+            "spawners": [ 7 ]
         }
     ]
 }
