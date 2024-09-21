@@ -162,13 +162,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8cc3097f768874ca108aa55bb1c12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
+  maxHp: 150
   currentHp: 0
-  movementSpeed: 1
-  baseMovementSpeed: 1
-  goldDropped: 50
+  movementSpeed: 0.3
+  baseMovementSpeed: 0.3
+  goldDropped: 5000
   freezeDuration: 2
-  shatterChance: 0.2
+  shatterChance: 0
   freezeStacks: 0
   maxFreezeStacks: 5
   freezeSlowPercentage: 0.2
@@ -177,7 +177,7 @@ MonoBehaviour:
   igniteDamage: 2
   igniteInterval: 1
   igniteResetTime: 3
-  fireResistance: 0
+  fireResistance: 0.5
   iceResistance: 0
   rigid: {fileID: 6051316408086821654}
   currentPathStage: -1
@@ -201,13 +201,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7814889349696615969}
     m_Modifications:
+    - target: {fileID: 111337871701688033, guid: a9fa4cbf95cd6f24cb7829ab74e49366, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2856265416133186275, guid: a9fa4cbf95cd6f24cb7829ab74e49366, type: 3}
       propertyPath: m_Color.b
-      value: 0.02332759
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2856265416133186275, guid: a9fa4cbf95cd6f24cb7829ab74e49366, type: 3}
       propertyPath: m_Color.g
-      value: 0.18867922
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2856265416133186275, guid: a9fa4cbf95cd6f24cb7829ab74e49366, type: 3}
       propertyPath: m_Color.r

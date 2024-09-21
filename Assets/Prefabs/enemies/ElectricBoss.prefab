@@ -162,13 +162,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2079f94c20e1eb48b365139631fe319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 50
+  maxHp: 100
   currentHp: 0
-  movementSpeed: 0.5
-  baseMovementSpeed: 1
+  movementSpeed: 0.2
+  baseMovementSpeed: 0.2
   goldDropped: 500
   freezeDuration: 2
-  shatterChance: 0.2
+  shatterChance: 0
   freezeStacks: 0
   maxFreezeStacks: 5
   freezeSlowPercentage: 0.2
@@ -177,8 +177,8 @@ MonoBehaviour:
   igniteDamage: 2
   igniteInterval: 1
   igniteResetTime: 3
-  fireResistance: 0
-  iceResistance: 0
+  fireResistance: 0.2
+  iceResistance: 0.2
   rigid: {fileID: 8676670213705296321}
   currentPathStage: -1
   movementDirection: {x: 0, y: 0}
