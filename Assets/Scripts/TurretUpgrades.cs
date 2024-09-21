@@ -139,8 +139,7 @@ public class TurretUpgrades : MonoBehaviour
     public void UpgradeTurret()
     {
 
-        // TODO store upgrade cost somewhere in JSON as INT
-        if (GameManager.Instance.SpendGold(100))
+        if (GameManager.Instance.SpendGold(cost))
         {
             turretLevel++;
             UpgradeAll();

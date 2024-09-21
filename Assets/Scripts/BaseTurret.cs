@@ -16,7 +16,7 @@ public abstract class BaseTurret : MonoBehaviour
     protected float fireCooldownTimer;
     [SerializeField] protected DamageType damageType = DamageType.normal;
     [SerializeField] protected DamageSource damageSource;
-    [SerializeField] protected int cost = 100;
+    [SerializeField] protected int cost;
     [SerializeField] public string upgradesConfigFile;
     [SerializeField] public bool isTownHallTurret = false;
 
@@ -72,6 +72,7 @@ public abstract class BaseTurret : MonoBehaviour
 		rangeObject.SetActive(false);
         scalUper = 5;
 
+        cost = upgrades.cost;
 
 	}
 
