@@ -11,11 +11,8 @@
         },
         {
             "enemies": [{
-                    "amount": 8,
-                    "enemyType": "NormalEnemy"
-                }, {
-                    "amount": 6,
-                    "enemyType": "TankEnemy"
+                    "amount": 1,
+                    "enemyType": "ElectricBoss"
                 }
             ],
             "name": "Wave 3",
