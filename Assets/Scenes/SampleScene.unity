@@ -6479,7 +6479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7859428086099062624, guid: d847a66026453344696f18140dcb3e8e, type: 3}
       propertyPath: maxHp
-      value: 10
+      value: 999
       objectReference: {fileID: 0}
     - target: {fileID: 7859428086099062624, guid: d847a66026453344696f18140dcb3e8e, type: 3}
       propertyPath: gameOverMenu
@@ -13671,6 +13671,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3719948324695173084, guid: 199b32ffece175a4dae751a5bb900ba5, type: 3}
       propertyPath: fireCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719948324695173084, guid: 199b32ffece175a4dae751a5bb900ba5, type: 3}
+      propertyPath: isTownHallTurret
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4267328000703159246, guid: 199b32ffece175a4dae751a5bb900ba5, type: 3}
@@ -22804,7 +22808,7 @@ SpriteRenderer:
   m_SortingLayerID: -2049372095
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 04bf420003206f0458c36bd1721eed9e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b9542b7129fe3a44ea3ef5221b587ad3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

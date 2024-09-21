@@ -133,8 +133,15 @@ public abstract class BaseTurret : MonoBehaviour
         if (isTownHallTurret) return;
 
         GameManager.Instance.UpgradeMenu(this);
+        RecalculateRangeObject();
+
+    }
+
+    private void RecalculateRangeObject()
+    {
         rangeObject.transform.localScale = new Vector3(range * scalUper, range * scalUper, 1);
-	}
+    }
+
     private IEnumerator removeStun()
     {
         yield return new WaitForSeconds(stunDuration);
@@ -173,6 +180,7 @@ public abstract class BaseTurret : MonoBehaviour
     {
         baseRange = upgrades.GetUpgradeByType(UpgradeTypes.range).value;
         range = baseRange;
+        RecalculateRangeObject();
 
     }
 
