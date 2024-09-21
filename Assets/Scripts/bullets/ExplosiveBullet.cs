@@ -23,6 +23,14 @@ public class ExplosiveBullet : BaseBullet
 			{
 				baseEnemy.DealDamage(newDamageInfo);
                 GameObject newExpolosion = Instantiate(explosion, baseEnemy.transform.position, Quaternion.identity);
+
+                switch(damageInfo.damageType)
+                {
+                    case DamageType.ice: newExpolosion.GetComponent<SpriteRenderer>().color = Color.blue; break;
+                    case DamageType.fire: newExpolosion.GetComponent<SpriteRenderer>().color = Color.red; break;
+                    case DamageType.normal: newExpolosion.GetComponent<SpriteRenderer>().color = Color.white; break;
+                }
+
                 Destroy(newExpolosion, 2f);
 			}
         }
