@@ -16,7 +16,7 @@ public abstract class BaseTurret : MonoBehaviour
     protected float fireCooldownTimer;
     [SerializeField] protected DamageType damageType = DamageType.normal;
     [SerializeField] protected DamageSource damageSource;
-    [SerializeField] protected int cost = 100;
+    [SerializeField] protected int cost;
     [SerializeField] public string upgradesConfigFile;
     [SerializeField] public bool isTownHallTurret = false;
 
@@ -72,6 +72,7 @@ public abstract class BaseTurret : MonoBehaviour
 		rangeObject.SetActive(false);
         scalUper = 5;
 
+        cost = upgrades.cost;
 
 	}
 
@@ -133,8 +134,15 @@ public abstract class BaseTurret : MonoBehaviour
         if (isTownHallTurret) return;
 
         GameManager.Instance.UpgradeMenu(this);
+        RecalculateRangeObject();
+
+    }
+
+    private void RecalculateRangeObject()
+    {
         rangeObject.transform.localScale = new Vector3(range * scalUper, range * scalUper, 1);
-	}
+    }
+
     private IEnumerator removeStun()
     {
         yield return new WaitForSeconds(stunDuration);
@@ -173,6 +181,7 @@ public abstract class BaseTurret : MonoBehaviour
     {
         baseRange = upgrades.GetUpgradeByType(UpgradeTypes.range).value;
         range = baseRange;
+        RecalculateRangeObject();
 
     }
 
