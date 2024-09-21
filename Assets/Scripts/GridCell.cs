@@ -63,14 +63,26 @@ public class GridCell : MonoBehaviour
 
         turretObj = Instantiate(turretToSpawn, transform.position, Quaternion.identity);
         turret = turretObj.GetComponent<BaseTurret>();
-        if(!GameManager.Instance.SpendGold(turret.GetCost()))
+
+        StartCoroutine(TryBuyTurret());
+
+
+    }
+
+    private IEnumerator TryBuyTurret()
+    {
+        yield return new WaitForEndOfFrame();
+
+        if (!GameManager.Instance.SpendGold(turret.GetCost()))
         {
             Destroy(turretObj);
         }
         else
         {
-            gridCellCollider.enabled = false; 
+            Debug.Log(turret.GetCost());
+            gridCellCollider.enabled = false;
         }
+
 
     }
 
