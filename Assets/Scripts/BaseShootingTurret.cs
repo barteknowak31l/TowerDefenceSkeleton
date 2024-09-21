@@ -25,12 +25,14 @@ public abstract class BaseShootingTurret : BaseTurret
     protected override void Start()
     {
         base.Start();
+
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
         upgrades.UpgradeSuccess += HandleUpgradeEvent;
+
     }
 
 
