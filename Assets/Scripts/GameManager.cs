@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,15 @@ public class GameManager : MonoBehaviour
     public GameObject upgradeMenu;
     private BaseTurret currentlySelectedTurret;
 
+    [Header("UI References")]
+    [SerializeField] public GameObject uiWinScreen;
+
+
+    public delegate void UpgradeMenuOpenEvent(BaseTurret turret);
+    public event UpgradeMenuOpenEvent UpgradeOpen;
+
+    public TextMeshProUGUI hpText;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -28,10 +38,8 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         Instance = this;
-
     }
-
-    public bool SpendGold(int amount)
+	public bool SpendGold(int amount)
     {
         if(amount <= gold)
         {
@@ -74,17 +82,31 @@ public class GameManager : MonoBehaviour
     {
         upgradeMenu.SetActive(true);
 
+        UpgradeOpen(turret);
+
         UpgradeMenu menu = upgradeMenu.GetComponent<UpgradeMenu>();
         menu.SetTurret(turret);
-
-
-        currentlySelectedTurret = turret; 
-    }
+		currentlySelectedTurret = turret;
+		currentlySelectedTurret.rangeObject.SetActive(true);
+	}
 
     public void CloseUpgradeMenu()
     {
         upgradeMenu.SetActive(false);
-        currentlySelectedTurret = null; 
+        currentlySelectedTurret.rangeObject.SetActive(false);
+		currentlySelectedTurret = null; 
+    }
+
+
+    public void SetHpText(string hp)
+    {
+        hpText.text = hp;
+    }
+
+    public void ShowWinScreen()
+    {
+        StopGame();
+        uiWinScreen.SetActive(true);
     }
 
 }

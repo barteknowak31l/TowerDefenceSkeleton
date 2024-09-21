@@ -119,8 +119,7 @@ public class WaveSpawner : MonoBehaviour
         }
         else
         {
-            // TODO create win event and handle win logic somewhere (GameManger probably)
-            Debug.Log("YOU WIN!");
+            GameManager.Instance.ShowWinScreen();
 
         }
     }
